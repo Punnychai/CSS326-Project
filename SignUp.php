@@ -50,11 +50,7 @@
 
                 <div class="column">
                     <div class="columnn membershipInfo">
-<<<<<<< HEAD
                         <label for="">MEMBERSHIP INFORMATION</label><br />
-=======
-                        <label for="">MEMBERSHIP INFORMATION</label><br />      <!-- Make some condition for user to specify their type -->
->>>>>>> 6a73aaea614df813e8d7655af6f325a12ffa740d
                         <input type="radio" name="memberType" id="student" class="radio-btn"/>
                         <label for="" class="member-type-label">Student</label><br />
                         <input type="radio" name="memberType" id="professor" class="radio-btn"/>
@@ -96,11 +92,7 @@
                         exit(); // make sure that no further code is executed
                     }
                     else {
-<<<<<<< HEAD
                         echo '<script>   /* popup window */
-=======
-                        echo '<script type="text/javascript">   /* popup window */
->>>>>>> 6a73aaea614df813e8d7655af6f325a12ffa740d
                             alert("You are a member!\nPlease select one member type.");
                         </script>';
                     }
