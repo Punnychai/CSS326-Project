@@ -12,7 +12,7 @@
 
     <body>
         <div class="row">
-            <form action="MemberCheck.php" method="post">
+            <form action="" method="post">
                 <div class="column">
 
                     <label for="">First Name</label><br />
@@ -48,12 +48,12 @@
                 </script>
                 <div class="column">
                     <div class="columnn membershipInfo">
-                        <label for="">MEMBERSHIP INFORMATION</label><br />      <!-- This can be left blank if user is not a member -->
-                        <input type="radio" name="member_type" id="student" class="radio-btn"/>
+                        <label for="">MEMBERSHIP INFORMATION</label><br />      <!-- Make some condition for user to specify their type -->
+                        <input type="radio" name="memberType" id="student" class="radio-btn"/>
                         <label for="" class="member-type-label">Student</label><br />
-                        <input type="radio" name="member_type" id="professor" class="radio-btn"/>
+                        <input type="radio" name="memberType" id="professor" class="radio-btn"/>
                         <label for="" class="member-type-label">Professor</label><br />
-                        <input type="radio" name="member_type" id="faculty_member" class="radio-btn"/>
+                        <input type="radio" name="memberType" id="faculty_member" class="radio-btn"/>
                         <label for="" class="member-type-label">Faculty Member</label><br />
                     </div>
                     <div class="row">
@@ -80,5 +80,27 @@
                 </div>
             </form>
         </div>
+
+        <?php
+            if (isset($_POST['SignUp'])) {
+                $userType = $_POST['utype'];
+                if ($userType == "member") {
+                    if (isset($_POST['memberType'])) {
+                        header('Location: Member.php');
+                        exit(); // make sure that no further code is executed
+                    }
+                    else {
+                        echo '<script type="text/javascript">   /* popup window */
+                            alert("You are a member!\nPlease select one member type.");
+                        </script>';
+                    }
+                    
+                }
+                else {
+                    header('Location: User.php');
+                }
+                
+            }
+        ?>
     </body>
 </html>
