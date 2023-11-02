@@ -26,6 +26,7 @@
                 $_SESSION['dob'] = $dob;
                 $_SESSION['username']=$username;
                 $_SESSION['passwd']=$password;
+                $_SESSION['signup'] = true;
                 if ($userType == "member") {
                     if (isset($_POST['memberType'])) {
                         // Capture and store additional member-specific data in $_SESSION
@@ -102,20 +103,20 @@
 
                 <div class="column">
                     <div class="columnn membershipInfo">
-                        <label for="student">MEMBERSHIP INFORMATION</label><br />
-                        <input type="radio" name="memberType" id="student" class="radio-btn"/>
-                        <label for="professor" class="member-type-label">Student</label><br />
-                        <input type="radio" name="memberType" id="professor" class="radio-btn"/>
-                        <label for="faculty_member" class="member-type-label">Professor</label><br />
-                        <input type="radio" name="memberType" id="faculty_member" class="radio-btn"/>
-                        <label for="" class="member-type-label">Faculty Member</label><br />
+                        <label>MEMBERSHIP INFORMATION</label><br />
+                        <input type="radio" name="memberType" id="student" class="radio-btn" value="Student"/>
+                        <label for="student" class="member-type-label">Student</label><br />
+                        <input type="radio" name="memberType" id="professor" class="radio-btn" value="Professor"/>
+                        <label for="professor" class="member-type-label">Professor</label><br />
+                        <input type="radio" name="memberType" id="faculty_member" class="radio-btn" value="Faculty"/>
+                        <label for="faculty_member" class="member-type-label">Faculty Member</label><br />
                     </div>
                     <div class="row">
                         <div class="column">
                             <label for="faculty">Faculty</label><br />
                             <select name="faculty" id="faculty">
-                                <option value="">Option 1</option>
-                                <option value="">Option 2</option>
+                                <option value="Option 1">Option 1</option>
+                                <option value="Option 2">Option 2</option>
                             </select>
                         </div>
                         <div class="column">

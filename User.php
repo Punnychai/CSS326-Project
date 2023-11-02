@@ -13,7 +13,7 @@
         <?php
         // Make sure you have started the session to access $_SESSION variables
         session_start();
-
+        if(isset($_SESSION['signup'])){
         // Database connection details
         $host = "localhost"; // Change to your MySQL server hostname
         $username = "root";  // Change to your MySQL username
@@ -85,6 +85,7 @@
 
         // Close the database connection
         $mysqli->close();
+        }
         ?>
     </body>
 </html>
