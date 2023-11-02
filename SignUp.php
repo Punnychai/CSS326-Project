@@ -1,5 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+    <?php
+        session_start();
+            if (isset($_POST['SignUp'])) {
+                $userType = $_POST['utype'];
+                $fname=$_POST['fname'];
+                $lname=$_POST['lname'];
+                $dob=$_POST['dob'];
+                $username=$_POST['username'];
+                if($_POST['passwd']==$_POST['cfmpasswd']){
+                    $password=$_POST['passwd'];
+                }
+                else {
+                    // Passwords don't match, display an error message
+                    echo '<script>
+                        alert("Passwords do not match. Please re-enter your password.");
+                        window.location = "SignUp.php"; // Redirect back to the signup page
+                    </script>';
+                    exit(); // Exit the script to prevent further execution
+                }
+                // Store user data in $_SESSION
+                $_SESSION['userType'] = $userType;
+                $_SESSION['fname'] = $fname;
+                $_SESSION['lname'] = $lname;
+                $_SESSION['dob'] = $dob;
+                $_SESSION['username']=$username;
+                $_SESSION['passwd']=$password;
+                if ($userType == "member") {
+                    if (isset($_POST['memberType'])) {
+                        // Capture and store additional member-specific data in $_SESSION
+                        $memberType = $_POST['memberType'];
+                        $faculty = $_POST['faculty'];
+                        $doe = $_POST['doe'];
+
+                        $_SESSION['memberType'] = $memberType;
+                        $_SESSION['faculty'] = $faculty;
+                        $_SESSION['doe'] = $doe;
+                        header('Location: Member.php');
+                        exit(); // make sure that no further code is executed
+                    }
+                    else {
+                        echo '<script>   /* popup window */
+                            alert("You are a member!\nPlease select one member type.");
+                        </script>';
+                    }
+                    
+                }
+                else {
+                    header('Location: User.php');
+                }
+                
+            }
+        ?>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,17 +67,17 @@
             <form action="" method="post">
                 <div class="column">
 
-                    <label for="">First Name</label><br />
-                    <input type="text" name="fname" id="fname" class="text-field" /><br />
-                    <label for="">Last Name</label><br />
-                    <input type="text" name="lname" id="lname" class="text-field" /><br />
-                    <label for="">User Type</label><br />
+                    <label for="fname">First Name</label><br />
+                    <input type="text" name="fname" id="fname" class="text-field" required /><br />
+                    <label for="lname">Last Name</label><br />
+                    <input type="text" name="lname" id="lname" class="text-field" required /><br />
+                    <label>User Type</label><br />
                     <select name="utype" id="utype">
                         <option value="general">General User</option>
                         <option value="member">Member</option>
                     </select><br />
-                    <label for="">Date of Birth</label><br />
-                    <input type="date" name="dob" id="dob" />
+                    <label for="dob">Date of Birth</label><br />
+                    <input type="date" name="dob" id="dob" required/>
                 </div>
 
                 <script>
@@ -50,32 +102,34 @@
 
                 <div class="column">
                     <div class="columnn membershipInfo">
-                        <label for="">MEMBERSHIP INFORMATION</label><br />
+                        <label for="student">MEMBERSHIP INFORMATION</label><br />
                         <input type="radio" name="memberType" id="student" class="radio-btn"/>
-                        <label for="" class="member-type-label">Student</label><br />
+                        <label for="professor" class="member-type-label">Student</label><br />
                         <input type="radio" name="memberType" id="professor" class="radio-btn"/>
-                        <label for="" class="member-type-label">Professor</label><br />
+                        <label for="faculty_member" class="member-type-label">Professor</label><br />
                         <input type="radio" name="memberType" id="faculty_member" class="radio-btn"/>
                         <label for="" class="member-type-label">Faculty Member</label><br />
                     </div>
                     <div class="row">
                         <div class="column">
-                            <label for="">Faculty</label><br />
+                            <label for="faculty">Faculty</label><br />
                             <select name="faculty" id="faculty">
                                 <option value="">Option 1</option>
                                 <option value="">Option 2</option>
                             </select>
                         </div>
                         <div class="column">
-                            <label for="">Enrolled Year</label><br />
-                            <input type="date" name="doe" id="doe" />
+                            <label for="doe">Enrolled Year</label><br />
+                            <input type="date" name="doe" id="doe" required />
                         </div>
                     </div>
                     <hr />
-                    <label for="">Create Password</label><br />
-                    <input type="text" name="" id="" class="text-field" /><br />
-                    <label for="">Confirm Password</label><br />
-                    <input type="text" name="" id="" class="text-field" /><br />
+                    <label for="username">Create Username</label><br />
+                    <input type="text" name="username" id="username" class="text-field" required /><br />
+                    <label for="passwd">Create Password</label><br />
+                    <input type="password" name="passwd" id="passwd" class="text-field" required /><br />
+                    <label for="cfmpasswd">Confirm Password</label><br />
+                    <input type="password" name="cfmpasswd" id="cfmpasswd" class="text-field" required /><br />
                 </div>
                 <div style="text-align: center">
                     <input type="submit" class="btn-signup" name="SignUp" value="SIGN UP">
@@ -83,26 +137,6 @@
             </form>
         </div>
 
-        <?php
-            if (isset($_POST['SignUp'])) {
-                $userType = $_POST['utype'];
-                if ($userType == "member") {
-                    if (isset($_POST['memberType'])) {
-                        header('Location: Member.php');
-                        exit(); // make sure that no further code is executed
-                    }
-                    else {
-                        echo '<script>   /* popup window */
-                            alert("You are a member!\nPlease select one member type.");
-                        </script>';
-                    }
-                    
-                }
-                else {
-                    header('Location: User.php');
-                }
-                
-            }
-        ?>
+        
     </body>
 </html>
