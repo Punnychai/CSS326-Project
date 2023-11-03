@@ -1,3 +1,4 @@
+<?php include 'connect.php';?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,19 +11,6 @@
             // Make sure you have started the session to access $_SESSION variables
             session_start();
             if(isset($_SESSION['signup'])){
-                // Database connection details
-                $host = "localhost"; // Change to your MySQL server hostname
-                $username = "root";  // Change to your MySQL username
-                $password = "root";  // Change to your MySQL password
-                $database = "mockup"; // Change to your database name
-
-                // Create a database connection
-                $mysqli = new mysqli($host, $username, $password, $database);
-
-                // Check the connection
-                if ($mysqli->connect_error) {
-                    die("Connection failed: " . $mysqli->connect_error);
-                }
 
                 // Prepare the user data
                 $userType = $_SESSION['userType'];

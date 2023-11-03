@@ -1,3 +1,4 @@
+<?php include 'connect.php';?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,19 +10,6 @@
         <?php
             session_start();
             if(isset($_SESSION['signup'])) {
-                // Database connection details
-                $host = "localhost"; // Change to your MySQL server hostname
-                $username = "root";  // Change to your MySQL username
-                $password = "root";  // Change to your MySQL password
-                $database = "mockup"; // Change to your database name
-
-                // Create a database connection
-                $mysqli = new mysqli($host, $username, $password, $database);
-
-                // Check the connection
-                if ($mysqli->connect_error) {
-                    die("Connection failed: " . $mysqli->connect_error);
-                }
 
                 // Create a prepared statement for inserting user data into the user table
                 $userStmt = $mysqli->prepare("INSERT INTO user (User_FName, User_LName, Username, User_DOB, User_Blacklist, Member_Flag, Member_Type, Member_Faculty, Member_Year, General_Flag, Admin_Flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
