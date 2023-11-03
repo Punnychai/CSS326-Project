@@ -64,10 +64,11 @@
     </head>
 
     <body>
-        <div class="row">
-            <form action="" method="post">
+        
+        <form action="" method="post">
+            <div class="row">
                 <div class="column">
-
+                    <img src="pictures\CSS326BasedLib.png" alt="" style="height: 19vh; display: block; margin-left: auto; margin-right: auto;"><br>
                     <label for="fname">First Name</label><br />
                     <input type="text" name="fname" id="fname" class="text-field" required /><br />
                     <label for="lname">Last Name</label><br />
@@ -101,7 +102,7 @@
                     });
                 </script>
 
-                <div class="column">
+                <div class="column" style="margin-left: 10vw;">
                     <div class="columnn membershipInfo">
                         <label>MEMBERSHIP INFORMATION</label><br />
                         <input type="radio" name="memberType" id="student" class="radio-btn" value="Student"/>
@@ -111,15 +112,15 @@
                         <input type="radio" name="memberType" id="faculty_member" class="radio-btn" value="Faculty"/>
                         <label for="faculty_member" class="member-type-label">Faculty Member</label><br />
                     </div>
-                    <div class="row">
-                        <div class="column">
+                    <div class="row selection-bar">
+                        <div class="column selection-col">
                             <label for="faculty">Faculty</label><br />
                             <select name="faculty" id="faculty">
                                 <option value="Option 1">Option 1</option>
                                 <option value="Option 2">Option 2</option>
                             </select>
                         </div>
-                        <div class="column">
+                        <div class="column selection-col">
                             <label for="doe">Enrolled Year</label><br />
                             <input type="date" name="doe" id="doe" required />
                         </div>
@@ -132,12 +133,10 @@
                     <label for="cfmpasswd">Confirm Password</label><br />
                     <input type="password" name="cfmpasswd" id="cfmpasswd" class="text-field" required /><br />
                 </div>
-                <div style="text-align: center">
-                    <input type="submit" class="btn-signup" name="SignUp" value="SIGN UP">
+            </div>
+            <div class="row">
+                    <input type="submit" class="btn-signup" name="SignUp" value="SIGN UP" style="text-align: center">
                 </div>
-            </form>
-        </div>
-
-        
+        </form>
     </body>
 </html>
