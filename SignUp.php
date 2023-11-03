@@ -135,8 +135,8 @@
                 </div>
             </div>
             <div class="row">
-                    <input type="submit" class="btn-signup" name="SignUp" value="SIGN UP" style="text-align: center">
-                </div>
+                <input type="submit" class="btn-signup" name="SignUp" value="SIGN UP" style="text-align: center">
+            </div>
         </form>
     </body>
 </html>
