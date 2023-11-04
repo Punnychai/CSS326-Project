@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    </head>
     <?php
         session_start();
             if (isset($_POST['SignUp'])) {
@@ -52,23 +61,14 @@
                 }
                 
             }
-        ?>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    </head>
+    ?>
 
     <body>
         
         <form action="" method="post">
             <div class="row">
                 <div class="column">
-                    <img src="pictures\CSS326BasedLib.png" alt="" style="height: 19vh; display: block; margin-left: auto; margin-right: auto;"><br>
+                    <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 19vh; display: block; margin-left: auto; margin-right: auto;"><br>
                     <label for="fname">First Name</label><br />
                     <input type="text" name="fname" id="fname" class="text-field" required /><br />
                     <label for="lname">Last Name</label><br />
