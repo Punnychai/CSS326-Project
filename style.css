@@ -30,18 +30,28 @@ body{
   width: 50%;
 }
 
-.btn-signup{
-    width: 14vw;
-    height: 7vh;
-    border: 4px solid #FFFFFF;
-    border-radius: 10px;
-    background-color: #4ca82c;
-    margin-top: 4vh;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 3.4vh;
-    font-weight: bold;
-    color: #FFFFFF;
+.btn-signup {
+  width: 14vw;
+  height: 7vh;
+  border: 4px solid #FFF;
+  border-radius: 10px;
+  background-color: #4ca82c;
+  margin-top: 4vh;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3.4vh;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.btn-login {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #4ca82c;
+  color: #fff;
+  font-size: 3.4vh;
+  font-weight: bold;
 }
 
 .member-type-label{
