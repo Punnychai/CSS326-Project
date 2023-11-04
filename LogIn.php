@@ -10,6 +10,21 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
+    <?php
+        if (isset($_POST['SignUp'])) {
+            header('Location: SignUp.php');
+        }
+        else if (isset($_POST['LogIn'])) {
+            session_start();
+            // Check that the username and password is filled
+            // if (/* user == member */ ) {
+            //     header('Location: Member.php');
+            // }
+            // else {
+            //     header('Location: User.php');
+            // }
+        }
+    ?>
 
     <body>
         <div class="row" style="padding-top: 12vh;">
@@ -19,9 +34,9 @@
             <div style="width: 35%; background: white; border-radius: 4vh; padding: 3%;">
                 <form action="" method="post">
                     <label for="username">Username</label><br />
-                    <input type="text" name="username" id="username" class="text-field" required /><br />
+                    <input type="text" name="username" id="username" class="text-field" /><br />
                     <label for="passwd">Password</label><br />
-                    <input type="password" name="passwd" id="passwd" class="text-field" required /><br />
+                    <input type="password" name="passwd" id="passwd" class="text-field" /><br />
                     <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #B165FD;">
                     <p> Doesn't have an account yet?</p>
                     <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #4ca82c;">
