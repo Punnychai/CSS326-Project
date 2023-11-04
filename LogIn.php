@@ -15,14 +15,25 @@
             header('Location: SignUp.php');
         }
         else if (isset($_POST['LogIn'])) {
-            session_start();
-            // Check that the username and password is filled
-            // if (/* user == member */ ) {
-            //     header('Location: Member.php');
-            // }
-            // else {
-            //     header('Location: User.php');
-            // }
+            /* session_start();
+
+            the username exists {
+                password is correct {
+                    user is member {
+
+                    }
+                    user is general user {
+
+                    }
+                }
+                password is incorrect {
+                    
+                }
+            }
+            username doesn't exist {
+
+            } */
+                
         }
     ?>
 
