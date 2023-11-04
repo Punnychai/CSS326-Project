@@ -11,56 +11,56 @@
     </head>
     <?php
         session_start();
-            if (isset($_POST['SignUp'])) {
-                $userType = $_POST['utype'];
-                $fname=$_POST['fname'];
-                $lname=$_POST['lname'];
-                $dob=$_POST['dob'];
-                $username=$_POST['username'];
-                if($_POST['passwd']==$_POST['cfmpasswd']){
-                    $password=$_POST['passwd'];
-                }
-                else {
-                    // Passwords don't match, display an error message
-                    echo '<script>
-                        alert("Passwords do not match. Please re-enter your password.");
-                        window.location = "SignUp.php"; // Redirect back to the signup page
-                    </script>';
-                    exit(); // Exit the script to prevent further execution
-                }
-                // Store user data in $_SESSION
-                $_SESSION['userType'] = $userType;
-                $_SESSION['fname'] = $fname;
-                $_SESSION['lname'] = $lname;
-                $_SESSION['dob'] = $dob;
-                $_SESSION['username']=$username;
-                $_SESSION['passwd']=$password;
-                $_SESSION['signup'] = true;
-                if ($userType == "member") {
-                    if (isset($_POST['memberType'])) {
-                        // Capture and store additional member-specific data in $_SESSION
-                        $memberType = $_POST['memberType'];
-                        $faculty = $_POST['faculty'];
-                        $doe = $_POST['doe'];
+        if (isset($_POST['SignUp'])) {
+            $userType = $_POST['utype'];
+            $fname=$_POST['fname'];
+            $lname=$_POST['lname'];
+            $dob=$_POST['dob'];
+            $username=$_POST['username'];
+            if($_POST['passwd']==$_POST['cfmpasswd']){
+                $password=$_POST['passwd'];
+            }
+            else {
+                // Passwords don't match, display an error message
+                echo '<script>
+                    alert("Passwords do not match. Please re-enter your password.");
+                    window.location = "SignUp.php"; // Redirect back to the signup page
+                </script>';
+                exit(); // Exit the script to prevent further execution
+            }
+            // Store user data in $_SESSION
+            $_SESSION['userType'] = $userType;
+            $_SESSION['fname'] = $fname;
+            $_SESSION['lname'] = $lname;
+            $_SESSION['dob'] = $dob;
+            $_SESSION['username']=$username;
+            $_SESSION['passwd']=$password;
+            $_SESSION['signup'] = true;
+            if ($userType == "member") {
+                if (isset($_POST['memberType'])) {
+                    // Capture and store additional member-specific data in $_SESSION
+                    $memberType = $_POST['memberType'];
+                    $faculty = $_POST['faculty'];
+                    $doe = $_POST['doe'];
 
-                        $_SESSION['memberType'] = $memberType;
-                        $_SESSION['faculty'] = $faculty;
-                        $_SESSION['doe'] = $doe;
-                        header('Location: Member.php');
-                        exit(); // make sure that no further code is executed
-                    }
-                    else {
-                        echo '<script>   /* popup window */
-                            alert("You are a member!\nPlease select one member type.");
-                        </script>';
-                    }
-                    
+                    $_SESSION['memberType'] = $memberType;
+                    $_SESSION['faculty'] = $faculty;
+                    $_SESSION['doe'] = $doe;
+                    header('Location: Member.php');
+                    exit(); // make sure that no further code is executed
                 }
                 else {
-                    header('Location: User.php');
+                    echo '<script>   /* popup window */
+                        alert("You are a member!\nPlease select one member type.");
+                    </script>';
                 }
                 
             }
+            else {
+                header('Location: User.php');
+            }
+            
+        }
     ?>
 
     <body>
