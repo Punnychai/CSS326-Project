@@ -22,9 +22,9 @@
                     <input type="text" name="username" id="username" class="text-field" required /><br />
                     <label for="passwd">Password</label><br />
                     <input type="password" name="passwd" id="passwd" class="text-field" required /><br />
-                    <input type="submit" class="btn-login" name="LogIn" value="LOG IN">
+                    <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #B165FD;">
                     <p> Doesn't have an account yet?</p>
-                    <input type="submit" class="btn-login" name="SignUp" value="SIGN UP">
+                    <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #4ca82c;">
                 </form>
             </div>
         </div>
