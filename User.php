@@ -17,7 +17,7 @@
         <?php
             // Make sure you have started the session to access $_SESSION variables
             session_start();
-            if(isset($_SESSION['signup'])){
+            if(isset($_SESSION['signup']) && $_SESSION['signup']==1){
 
                 // Prepare the user data
                 $userType = $_SESSION['userType'];
