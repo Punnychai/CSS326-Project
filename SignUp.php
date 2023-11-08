@@ -13,12 +13,12 @@
         session_start();
         if (isset($_POST['SignUp'])) {
             $userType = $_POST['utype'];
-            $fname=$_POST['fname'];
-            $lname=$_POST['lname'];
-            $dob=$_POST['dob'];
-            $username=$_POST['username'];
-            if($_POST['passwd']==$_POST['cfmpasswd']){
-                $password=$_POST['passwd'];
+            $fname = $_POST['fname'];
+            $lname = $_POST['lname'];
+            $dob = $_POST['dob'];
+            $username = $_POST['username'];
+            if ($_POST['passwd'] == $_POST['cfmpasswd']){
+                $password = $_POST['passwd'];
             }
             else {
                 // Passwords don't match, display an error message
@@ -33,8 +33,8 @@
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
             $_SESSION['dob'] = $dob;
-            $_SESSION['username']=$username;
-            $_SESSION['passwd']=$password;
+            $_SESSION['username'] = $username;
+            $_SESSION['passwd'] = $password;
             $_SESSION['signup'] = true;
             if ($userType == "member") {
                 if (isset($_POST['memberType'])) {
