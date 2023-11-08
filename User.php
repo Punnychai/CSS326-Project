@@ -41,7 +41,7 @@
                     if ($stmtUser->execute()) {
                         // Get the User_ID of the newly inserted user
                         $user_id = $stmtUser->insert_id;
-
+                        $_SESSION['user_id']=$user_id;
                         // Close the statement
                         $stmtUser->close();
 

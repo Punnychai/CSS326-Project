@@ -13,8 +13,8 @@
     <body>
         <?php
             session_start();
-            if(isset($_SESSION['signup'])) {
-
+            if(isset($_SESSION['signup']) && $_SESSION['signup']==1) {
+                $_SESSION['signup']=0;
                 // Create a prepared statement for inserting user data into the user table
                 $userStmt = $mysqli->prepare("INSERT INTO user (User_FName, User_LName, Username, User_DOB, User_Blacklist, Member_Flag, Member_Type, Member_Faculty, Member_Year, General_Flag, Admin_Flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -41,7 +41,7 @@
                     if ($userStmt->execute()) {
                         // Get the User_ID of the inserted user
                         $user_id = $userStmt->insert_id;
-
+                        $_SESSION['user_id']=$user_id;
                         // Now, bind values to the placeholders for the login table
                         $loginUsername = $_SESSION['username'];
                         $loginPassword = $_SESSION['passwd']; // Assuming password is "root"
@@ -69,6 +69,13 @@
             if (isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];
                 $userType = $_SESSION['userType'];
+                /*
+                $sqlmem="SELECT Member_Type, Member_Faculty, Member_Year from user WHERE User_ID=?";
+                $stmtmem=$mysqli->prepare($sqlmem);
+                $stmtmem->bind_param("i", $_SESSION['user_id']);
+                $stmtmem->execute();
+                $stmtmem->bind_result($_SESSION['memberType'],$_SESSION['faculty'],$_SESSION['doe']);
+                */
                 $memberType = $_SESSION['memberType'];
                 $faculty = $_SESSION['faculty'];
                 $doe = $_SESSION['doe'];
@@ -80,7 +87,7 @@
                 }
                 echo "User Type: $userType<br>";
 
-                if ($userType == "member") {
+                if ($userType == "Member") {
                     echo "Member Type: $memberType<br>";
                     echo "Faculty: $faculty<br>";
                     echo "Date of Enrollment: $doe<br>";

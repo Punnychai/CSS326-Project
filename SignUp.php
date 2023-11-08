@@ -36,7 +36,7 @@
             $_SESSION['username'] = $username;
             $_SESSION['passwd'] = $password;
             $_SESSION['signup'] = true;
-            if ($userType == "member") {
+            if ($userType == "Member") {
                 if (isset($_POST['memberType'])) {
                     // Capture and store additional member-specific data in $_SESSION
                     $memberType = $_POST['memberType'];
@@ -74,8 +74,8 @@
                     <input type="text" name="lname" id="lname" class="text-field" required /><br />
                     <label>User Type</label><br />
                     <select name="utype" id="utype">
-                        <option value="general">General User</option>
-                        <option value="member">Member</option>
+                        <option value="General">General User</option>
+                        <option value="Member">Member</option>
                     </select><br />
                     <label for="dob">Date of Birth</label><br />
                     <input type="date" name="dob" id="dob" required/>
@@ -91,10 +91,10 @@
                         membershipInfo.style.opacity = 0;   // DEFAULT -> Invisible Member Info
                         // Add an event listener to the "User Type" select element
                         utypeSelect.addEventListener("change", function() {
-                            if (utypeSelect.value === "member") {
+                            if (utypeSelect.value === "Member") {
                                 membershipInfo.style.opacity = 1;
                             }
-                            if (utypeSelect.value === "general") {
+                            if (utypeSelect.value === "General") {
                                 membershipInfo.style.opacity = 0;
                             }
                         });
