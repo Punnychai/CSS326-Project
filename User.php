@@ -25,6 +25,8 @@
             </div>
         </div>
         <?php
+            // Make sure you have started the session to access $_SESSION variables
+            session_start();
             if(isset($_SESSION['signup'])){
 
                 // Prepare the user data
