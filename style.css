@@ -55,13 +55,26 @@ body{
 
 .headbar {
   width: 95vw;
-  height: 9vh;
-  position: relative;
+  height: 10vh;
   margin-left: -8vw;
   background-color: white;
-  text-align: center;
-  padding-top: 0.1vh;
+  padding-top: 1px;
   border-radius: 20px;
+}
+
+.greet-text {
+  position: relative;
+  top: -2.6vh;
+  left: 30vw;
+  font-size: 36px;
+}
+
+.reserve {
+  width: 35vw;
+  height: 22vw;
+  background-color: white;
+  border-radius: 20px;
+  margin: 15vh auto 0 auto;
 }
 
 .member-type-label{

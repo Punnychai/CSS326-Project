@@ -11,12 +11,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body>
-        <div class="headbar">
-            <h1>Greeting messages go here</h1>
+        <div class="headbar row">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
+            <div class="greet-text">
+                <?php
+                    session_start();
+                    $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
+                    $result = $mysqli -> query($getName);
+                    while ($row = $result -> fetch_assoc()) {
+                        echo "<p>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</p><br>";
+                    }
+                ?>
+            </div>
         </div>
         <?php
-            // Make sure you have started the session to access $_SESSION variables
-            session_start();
             if(isset($_SESSION['signup'])){
 
                 // Prepare the user data
@@ -82,13 +90,6 @@
                 $faculty = $_SESSION['faculty'];
                 $doe = $_SESSION['doe'];
 
-                $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
-                $result = $mysqli -> query($getName);
-                while ($row = $result -> fetch_assoc()) {
-                    echo "<h3>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</h3><br>";
-                }
-                echo "User Type: $userType<br>";
-
                 if ($userType == "member") {
                     echo "Member Type: $memberType<br>";
                     echo "Faculty: $faculty<br>";
@@ -102,5 +103,8 @@
             // Close the database connection
             $mysqli->close();
         ?>
+        <div class="reserve">
+            <p>meow meow reserve table meow</p>
+        </div>
     </body>
 </html>

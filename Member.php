@@ -11,8 +11,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body>
+        <div class="headbar row">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
+            <div class="greet-text">
+                <?php
+                    session_start();
+                    $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
+                    $result = $mysqli -> query($getName);
+                    while ($row = $result -> fetch_assoc()) {
+                        echo "<p>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</p><br>";
+                    }
+                ?>
+            </div>
+        </div>
         <?php
-            session_start();
             if(isset($_SESSION['signup']) && $_SESSION['signup']==1) {
                 $_SESSION['signup']=0;
                 // Create a prepared statement for inserting user data into the user table
@@ -80,11 +92,6 @@
                 $faculty = $_SESSION['faculty'];
                 $doe = $_SESSION['doe'];
 
-                $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
-                $result = $mysqli -> query($getName);
-                while ($row = $result -> fetch_assoc()) {
-                    echo "<h3>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</h3><br>";
-                }
                 echo "User Type: $userType<br>";
 
                 if ($userType == "Member") {
@@ -100,5 +107,11 @@
             // Close the database connection
             $mysqli->close();
         ?>
+        <div class="reserve">
+            <p>meow meow reserve table meow</p>
+        </div>
+        <div class="reserve">
+            <p>meow meow reserve books meow</p>
+        </div>
     </body>
 </html>
