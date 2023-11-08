@@ -41,13 +41,6 @@
             }
 
             $chkpw->close();
-
-            // if (/* user == member */ ) {
-            //     header('Location: Member.php');
-            // }
-            // else {
-            //     header('Location: User.php');
-            // }
         }
     ?>
 
