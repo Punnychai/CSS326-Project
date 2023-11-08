@@ -5,8 +5,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>General User</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body>
+        <div class="headbar">
+            <h1>Greeting messages go here</h1>
+        </div>
         <?php
             // Make sure you have started the session to access $_SESSION variables
             session_start();
