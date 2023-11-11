@@ -86,6 +86,8 @@ body.login{
   border: none;
 }
 
+
+
 .reserve label{
   font-size: 5.18vh;
   font-weight: bold;
@@ -160,6 +162,16 @@ input.text-field.login{
   margin: 1.3vh 1.5vw 1.3vh 1.5vw;
   border-bottom: 4px solid #555555;
   border-radius: 0px;
+}
+
+.reserve.admin{
+  height: 30vh;
+  margin: 8.5vh 5vw 0 5vw;
+}
+
+.reserve-icon.admin{
+  height: 15.8vh;
+
 }
 
 

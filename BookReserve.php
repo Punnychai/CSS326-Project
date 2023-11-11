@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
-    <body>
+    <body class="center">
         <div class="headbar row">
             <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
             <div class="greet-text">
@@ -24,5 +24,5 @@
                 ?>
             </div>
         </div>
-    </body>
+    </body> 
 </html>
