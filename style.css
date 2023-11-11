@@ -57,6 +57,30 @@ body.login{
   font-weight: bold;
 }
 
+.headbar {
+  width: 95vw;
+  height: 10vh;
+  margin-left: -8vw;
+  background-color: white;
+  padding-top: 1px;
+  border-radius: 20px;
+}
+
+.greet-text {
+  position: relative;
+  top: -2.6vh;
+  left: 30vw;
+  font-size: 36px;
+}
+
+.reserve {
+  width: 35vw;
+  height: 22vw;
+  background-color: white;
+  border-radius: 20px;
+  margin: 15vh auto 0 auto;
+}
+
 .member-type-label{
     font-size: 3.4vh;
     font-weight: 500;

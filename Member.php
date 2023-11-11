@@ -5,12 +5,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Member</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body>
+        <div class="headbar row">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
+            <div class="greet-text">
+                <?php
+                    session_start();
+                    $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
+                    $result = $mysqli -> query($getName);
+                    while ($row = $result -> fetch_assoc()) {
+                        echo "<p>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</p><br>";
+                    }
+                ?>
+            </div>
+        </div>
         <?php
-            session_start();
-            if(isset($_SESSION['signup'])) {
-
+            if(isset($_SESSION['signup']) && $_SESSION['signup']==1) {
+                $_SESSION['signup']=0;
                 // Create a prepared statement for inserting user data into the user table
                 $userStmt = $mysqli->prepare("INSERT INTO user (User_FName, User_LName, Username, User_DOB, User_Blacklist, Member_Flag, Member_Type, Member_Faculty, Member_Year, General_Flag, Admin_Flag) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
@@ -37,7 +53,7 @@
                     if ($userStmt->execute()) {
                         // Get the User_ID of the inserted user
                         $user_id = $userStmt->insert_id;
-
+                        $_SESSION['user_id']=$user_id;
                         // Now, bind values to the placeholders for the login table
                         $loginUsername = $_SESSION['username'];
                         $loginPassword = $_SESSION['passwd']; // Assuming password is "root"
@@ -65,18 +81,20 @@
             if (isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];
                 $userType = $_SESSION['userType'];
+                /*
+                $sqlmem="SELECT Member_Type, Member_Faculty, Member_Year from user WHERE User_ID=?";
+                $stmtmem=$mysqli->prepare($sqlmem);
+                $stmtmem->bind_param("i", $_SESSION['user_id']);
+                $stmtmem->execute();
+                $stmtmem->bind_result($_SESSION['memberType'],$_SESSION['faculty'],$_SESSION['doe']);
+                */
                 $memberType = $_SESSION['memberType'];
                 $faculty = $_SESSION['faculty'];
                 $doe = $_SESSION['doe'];
 
-                $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
-                $result = $mysqli -> query($getName);
-                while ($row = $result -> fetch_assoc()) {
-                    echo "<h3>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</h3><br>";
-                }
                 echo "User Type: $userType<br>";
 
-                if ($userType == "member") {
+                if ($userType == "Member") {
                     echo "Member Type: $memberType<br>";
                     echo "Faculty: $faculty<br>";
                     echo "Date of Enrollment: $doe<br>";
@@ -89,5 +107,11 @@
             // Close the database connection
             $mysqli->close();
         ?>
+        <div class="reserve">
+            <p>meow meow reserve table meow</p>
+        </div>
+        <div class="reserve">
+            <p>meow meow reserve books meow</p>
+        </div>
     </body>
 </html>
