@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
-    <body>
+    <body class="center">
         <div class="headbar row">
             <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
             <div class="greet-text">
@@ -92,7 +92,7 @@
                 $faculty = $_SESSION['faculty'];
                 $doe = $_SESSION['doe'];
 
-                echo "User Type: $userType<br>";
+                //echo "User Type: $userType<br>"; //I commented this so Im not confused
 
                 if ($userType == "Member") {
                     echo "Member Type: $memberType<br>";
@@ -107,11 +107,13 @@
             // Close the database connection
             $mysqli->close();
         ?>
-        <div class="reserve">
-            <p>meow meow reserve table meow</p>
-        </div>
-        <div class="reserve">
-            <p>meow meow reserve books meow</p>
-        </div>
+        <button class="reserve">
+        <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
+            <br><label for="">Table reservation</label>
+        </button>
+        <button class="reserve">
+        <img src="pictures\book_icon_big.png" alt="" class="reserve-icon">
+            <br><label for="">Book reservation</label>
+        </button>
     </body>
 </html>
