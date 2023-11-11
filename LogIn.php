@@ -1,6 +1,6 @@
 <?php include 'connect.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-image: linear-gradient(225deg, #B165FD, #FE5F7C);">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
