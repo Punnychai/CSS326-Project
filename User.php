@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
-    <body>
+    <body class="center">
         <div class="headbar row">
             <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
             <div class="greet-text">
@@ -105,8 +105,9 @@
             // Close the database connection
             $mysqli->close();
         ?>
-        <div class="reserve">
-            <p>meow meow reserve table meow</p>
-        </div>
+        <button class="reserve">
+            <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
+            <br><label for="">Table reservation</label>
+        </button>
     </body>
 </html>
