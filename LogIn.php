@@ -1,59 +1,70 @@
 <?php include 'connect.php'; ?>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Log In</title>
-        <link rel="stylesheet" href="style.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    </head>
-    <?php
-        if (isset($_POST['SignUp'])) {
-            header('Location: SignUp.php');
-        }
-        else if (isset($_POST['LogIn'])) {
-            /* session_start();
+<html lang="en" style="background-image: linear-gradient(225deg, #B165FD, #FE5F7C);">
 
-            the username exists {
-                password is correct {
-                    user is member {
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;700&display=swap" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<?php
+if (isset($_POST['SignUp'])) {
+    header('Location: SignUp.php');
+} else if (isset($_POST['LogIn'])) {
+    /* session_start();
 
-                    }
-                    user is general user {
+    the username exists {
+        password is correct {
+            user is member {
 
-                    }
-                }
-                password is incorrect {
-                    
-                }
             }
-            username doesn't exist {
+            user is general user {
 
-            } */
-                
+            }
         }
-    ?>
+        password is incorrect {
+            
+        }
+    }
+    username doesn't exist {
 
-    <body>
-        <div class="row" style="padding-top: 12vh;">
-            <div style="width: 50%;">
-                <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 46vh; position: relative; top: 6vh; left: 6vw">
-            </div>
-            <div style="width: 35%; background: white; border-radius: 4vh; padding: 3%;">
-                <form action="" method="post">
-                    <label for="username">Username</label><br />
-                    <input type="text" name="username" id="username" class="text-field" /><br />
-                    <label for="passwd">Password</label><br />
-                    <input type="password" name="passwd" id="passwd" class="text-field" /><br />
-                    <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #B165FD;">
-                    <p> Doesn't have an account yet?</p>
-                    <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #4ca82c;">
-                </form>
-            </div>
+    } */
+
+}
+?>
+
+<body class="login">
+    <div class="row">
+        <div style="width: 50%;">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo"
+                style="height: 46vh; position: relative; top: 6vh; left: 6vw">
         </div>
-    </body>
-    
+        <form action="" method="post" class="login-panel">
+            <div class="row login">
+                <div class="column">
+                    <label for="username" class="login-label">Username</label>
+                    <input type="text" name="username" id="username" class="text-field login" />
+                </div>
+            </div>
+            <div class="row login">
+                <div class="column">
+                <label for="passwd" class="login-label">Password</label>
+                <input type="password" name="passwd" id="passwd" class="text-field login" />
+                </div>
+                
+            </div>
+
+
+            <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;">
+            <p> Doesn't have an account yet?</p>
+            <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #B165FD;">
+        </form>
+    </div>
+</body>
+
 </html>

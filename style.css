@@ -10,6 +10,10 @@ body{
     padding: 4vh 10vw 4vh 10vw;
 }
 
+body.login{
+  padding-top: 16.7vh;
+}
+
 .row {
     font-size: 3.4vh;
     font-weight: bold;
@@ -45,8 +49,8 @@ body{
 }
 
 .btn-login {
-  width: 100px;
-  height: 40px;
+  width: 37%;
+  height: 10%;
   border-radius: 5px;
   color: #fff;
   font-size: 3.4vh;
@@ -56,8 +60,41 @@ body{
 .member-type-label{
     font-size: 3.4vh;
     font-weight: 500;
-    
 }
+
+.row.login{
+  margin: 3.8%;
+  align-content: space-between;
+}
+
+.login-panel{
+  width: 37vw; 
+  height: 68vh; 
+  background: white;
+  border-radius: 4vh; 
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.login-label{
+  text-align: left;
+  margin-left: 1.5vw;
+}
+
+form.login-panel{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.login-panel p{
+  text-align: center;
+  color: #882CD1;
+}
+
 
 input, select{
     height: 7vh;
@@ -79,6 +116,15 @@ input.radio-btn{
 input.text-field{
     width: 32vw;
 }
+
+input.text-field.login{
+  margin: 1.3vh 1.5vw 1.3vh 1.5vw;
+  border-bottom: 4px solid #555555;
+  border-radius: 0px;
+}
+
+
+
 
 
   @media (max-width: 600px) {
