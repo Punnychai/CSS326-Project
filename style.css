@@ -65,9 +65,17 @@ body.login{
 
 .headbar {
   width: 96.77vw;
-  height: 10vh;
+  height: 14.35vh;
   background-color: white;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.headbar img{
+  height: 10.5vh; 
+  position: relative; 
+  left: 3vw;
 }
 
 .greet-text {
@@ -88,7 +96,7 @@ body.login{
 
 
 
-.reserve label{
+.reserve label, .add label{
   font-size: 5.18vh;
   font-weight: bold;
   font-family: "Inter";
@@ -174,7 +182,29 @@ input.text-field.login{
 
 }
 
+.manage-panel{
+  width: 93.77vw;
+  height: 67.5vh;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 5.5vh;
+  padding-top: 2.5vh;
+  padding-left: 3vw;
+}
 
+button.add{
+  width: 13.6vw;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: -1.14vw;
+}
+
+.add-icon{
+  height: 11.7vh;
+}
 
 
 

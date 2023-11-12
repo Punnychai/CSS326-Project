@@ -12,7 +12,7 @@
     </head>
     <body>
         <div class="headbar row">
-            <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 8vh; position: relative; top: 1vh; left: 3vw">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo">
             <div class="greet-text">
                 <?php
                     session_start();
