@@ -15,29 +15,29 @@ body.login{
 }
 
 .row {
-    font-size: 3.4vh;
-    font-weight: bold;
+  font-size: 3.4vh;
+  font-weight: bold;
   /* border: 3px solid blue; */
   display: flex;
-}
-
-.column.selection-col input, .column.selection-col select{
-  width: 15vw;
-  min-width: 125px;
-}
-
-.center{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 4vh 0 4vh 0;
 }
 
 .column {
   /* border: 3px solid red; */
   float: left;
   width: 50%;
+}
+
+.column.selection-col input, .column.selection-col select {
+  width: 15vw;
+  min-width: 125px;
+}
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 0 4vh 0;
 }
 
 .btn-signup {
@@ -103,7 +103,7 @@ body.login{
 }
 
 .reserve-icon{
-  height: 22vh;
+  height: 10vh;
 }
 
 .member-type-label{

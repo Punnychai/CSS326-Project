@@ -107,13 +107,17 @@
             // Close the database connection
             $mysqli->close();
         ?>
-        <button class="reserve">
-        <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
-            <br><label for="">Table reservation</label>
-        </button>
-        <button class="reserve">
-        <img src="pictures\book_icon_big.png" alt="" class="reserve-icon">
-            <br><label for="">Book reservation</label>
-        </button>
+        <a href="TableReserve.php" class="reserve">
+            <button>
+                <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
+                <br><label for="">Table reservation</label>
+            </button>
+        </a>
+        <a href="BookReserve.php" class="reserve">
+            <button>
+                <img src="pictures\book_icon_big.png" alt="" class="reserve-icon">
+                <br><label for="">Book reservation</label>
+            </button>
+        </a>
     </body>
 </html>

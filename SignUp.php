@@ -13,12 +13,12 @@
         session_start();
         if (isset($_POST['SignUp'])) {
             $userType = $_POST['utype'];
-            $fname = $_POST['fname'];
-            $lname = $_POST['lname'];
-            $dob = $_POST['dob'];
-            $username = $_POST['username'];
-            if ($_POST['passwd'] == $_POST['cfmpasswd']){
-                $password = $_POST['passwd'];
+            $fname=$_POST['fname'];
+            $lname=$_POST['lname'];
+            $dob=$_POST['dob'];
+            $username=$_POST['username'];
+            if($_POST['passwd']==$_POST['cfmpasswd']){
+                $password=$_POST['passwd'];
             }
             else {
                 // Passwords don't match, display an error message
@@ -33,10 +33,10 @@
             $_SESSION['fname'] = $fname;
             $_SESSION['lname'] = $lname;
             $_SESSION['dob'] = $dob;
-            $_SESSION['username'] = $username;
-            $_SESSION['passwd'] = $password;
+            $_SESSION['username']=$username;
+            $_SESSION['passwd']=$password;
             $_SESSION['signup'] = true;
-            if ($userType == "Member") {
+            if ($userType == "member") {
                 if (isset($_POST['memberType'])) {
                     // Capture and store additional member-specific data in $_SESSION
                     $memberType = $_POST['memberType'];
@@ -64,6 +64,7 @@
     ?>
 
     <body>
+        
         <form action="" method="post">
             <div class="row">
                 <div class="column">
@@ -74,8 +75,8 @@
                     <input type="text" name="lname" id="lname" class="text-field" required /><br />
                     <label>User Type</label><br />
                     <select name="utype" id="utype">
-                        <option value="General">General User</option>
-                        <option value="Member">Member</option>
+                        <option value="general">General User</option>
+                        <option value="member">Member</option>
                     </select><br />
                     <label for="dob">Date of Birth</label><br />
                     <input type="date" name="dob" id="dob" required/>
@@ -86,23 +87,27 @@
                         // Get a reference to the "User Type" select element
                         var utypeSelect = document.getElementById("utype");
                         // Get a reference to the "MEMBERSHIP INFORMATION" section
-                        var membershipInfo = document.querySelector(".membershipInfo");
+                        var memberInfo1 = document.querySelector(".memberInfo1");
+                        var memberInfo2 = document.querySelector(".memberInfo2");
 
-                        membershipInfo.style.opacity = 0;   // DEFAULT -> Invisible Member Info
+                        memberInfo1.style.opacity = 0;   // DEFAULT -> Invisible Member Info
+                        memberInfo2.style.opacity = 0;
                         // Add an event listener to the "User Type" select element
                         utypeSelect.addEventListener("change", function() {
-                            if (utypeSelect.value === "Member") {
-                                membershipInfo.style.opacity = 1;
+                            if (utypeSelect.value === "member") {
+                                memberInfo1.style.opacity = 1;
+                                memberInfo2.style.opacity = 1;
                             }
-                            if (utypeSelect.value === "General") {
-                                membershipInfo.style.opacity = 0;
+                            if (utypeSelect.value === "general") {
+                                memberInfo1.style.opacity = 0;
+                                memberInfo2.style.opacity = 0;
                             }
                         });
                     });
                 </script>
 
                 <div class="column" style="margin-left: 10vw;">
-                    <div class="columnn membershipInfo">
+                    <div class="columnn memberInfo1">
                         <label>MEMBERSHIP INFORMATION</label><br />
                         <input type="radio" name="memberType" id="student" class="radio-btn" value="Student"/>
                         <label for="student" class="member-type-label">Student</label><br />
@@ -111,7 +116,7 @@
                         <input type="radio" name="memberType" id="faculty_member" class="radio-btn" value="Faculty"/>
                         <label for="faculty_member" class="member-type-label">Faculty Member</label><br />
                     </div>
-                    <div class="row selection-bar">
+                    <div class="row selection-bar memberInfo2">
                         <div class="column selection-col">
                             <label for="faculty">Faculty</label><br />
                             <select name="faculty" id="faculty">

@@ -105,9 +105,11 @@
             // Close the database connection
             $mysqli->close();
         ?>
-        <button class="reserve">
-            <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
-            <br><label for="">Table reservation</label>
-        </button>
+        <a href="TableReserve.php" class="reserve">
+            <button>
+                <img src="pictures\table_icon_big.png" alt="" class="reserve-icon">
+                <br><label for="">Table reservation</label>
+            </button>
+        </a>
     </body>
 </html>
