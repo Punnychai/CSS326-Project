@@ -96,7 +96,7 @@ body.login{
 
 
 
-.reserve label, .add label{
+.reserve label, .add label, .admin td, .popup h1{
   font-size: 5.18vh;
   font-weight: bold;
   font-family: "Inter";
@@ -190,6 +190,12 @@ input.text-field.login{
   margin-top: 5.5vh;
   padding-top: 2.5vh;
   padding-left: 3vw;
+  overflow-y: auto;
+}
+
+.manage-panel a{
+  color: black;
+  text-decoration: none;
 }
 
 button.add{
@@ -204,6 +210,60 @@ button.add{
 
 .add-icon{
   height: 11.7vh;
+}
+
+.popup{
+  padding: 0 0 0 0;
+  width: 40vw;
+  height: 65vh;
+  position: fixed;
+  top: 17.5vh;
+  left: 30.3vw;
+  background-color: #B165FD;
+  border-radius: 20px;
+  display: none;
+}
+
+.popup h1{
+  color: white;
+  margin: 0 0 0 0;
+}
+
+.popup h2{
+  font-size: 5.18vh;
+  font-family: "Inter";
+  font-weight: 300;
+  color: white;
+  margin: 0 0 0 0;
+}
+
+.popup .column{
+  width: 100%;
+  text-align: center;
+}
+
+.popup input{
+  border-radius: 35px;
+  color: #B165FD;
+  font-weight: bold;
+  height: 13.4vh;
+  width: 31.56vw;
+  font-size: 8.89vh;
+}
+
+.popup input#username{
+  height: 6.2vh;
+  font-size: 5.18vh;
+  font-weight: 300;
+}
+
+.overlay{
+  background: white;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0.6;
+  position: fixed;
+  display: none;
 }
 
 
