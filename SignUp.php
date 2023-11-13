@@ -87,6 +87,7 @@
                         // Get a reference to the "User Type" select element
                         var utypeSelect = document.getElementById("utype");
                         // Get a reference to the "MEMBERSHIP INFORMATION" section
+                        // I need to use 2 vars since querySelector can only select one element  - PUNNYCHAI
                         var memberInfo1 = document.querySelector(".memberInfo1");
                         var memberInfo2 = document.querySelector(".memberInfo2");
 
