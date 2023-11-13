@@ -94,6 +94,11 @@ body.login{
   border: none;
 }
 
+.reserve button {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
 
 
 .reserve label, .add label, .admin td, .popup h1{
@@ -103,7 +108,7 @@ body.login{
 }
 
 .reserve-icon{
-  height: 10vh;
+  height: 22vh;
 }
 
 .member-type-label{
