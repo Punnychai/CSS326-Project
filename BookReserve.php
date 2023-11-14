@@ -16,10 +16,11 @@
         <div class="main">
             <h2>Book Reservation page</h2>			
             <table style="width: 70vw">
-                <col style="width: 30%;">
-                <col style="width: 30%;">
+                <col style="width: 27%;">
+                <col style="width: 27%;">
                 <col style="width: 20%;">
-                <col style="width: 10%;">
+                <col style="width: 16%;">
+                <col style="width: 8%;">
 
                 <tr>
                     <th>Title</th> 

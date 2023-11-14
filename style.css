@@ -200,11 +200,12 @@ input.text-field.login{
 
 .main th {
 	border: 1px solid black;
+  padding: 1vh;
 	background-color: #F577A6;
 }
 .main td {
 	border: 1px solid black;
-	
+  text-align: center;
 }
 .main button {
   width: 100%;
