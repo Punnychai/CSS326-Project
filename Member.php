@@ -11,19 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body class="center">
-        <div class="headbar row">
-            <img src="pictures\CSS326BasedLib.png" alt="Logo">
-            <div class="greet-text">
-                <?php
-                    session_start();
-                    $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
-                    $result = $mysqli -> query($getName);
-                    while ($row = $result -> fetch_assoc()) {
-                        echo "<p>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</p><br>";
-                    }
-                ?>
-            </div>
-        </div>
+        <?php include 'headBar.php'; ?>
         <?php
             if(isset($_SESSION['signup']) && $_SESSION['signup']==1) {
                 $_SESSION['signup']=0;
