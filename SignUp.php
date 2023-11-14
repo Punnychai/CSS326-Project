@@ -74,7 +74,7 @@
                     <label for="lname">Last Name</label><br />
                     <input type="text" name="lname" id="lname" class="text-field" required /><br />
                     <label>User Type</label><br />
-                    <select name="utype" id="utype">
+                    <select name="utype" id="utype" onchange="handleUserTypeChange()">
                         <option value="general">General User</option>
                         <option value="member">Member</option>
                     </select><br />
@@ -127,8 +127,22 @@
                         </div>
                         <div class="column selection-col">
                             <label for="doe">Enrolled Year</label><br />
-                            <input type="date" name="doe" id="doe" required />
+                            <input type="date" name="doe" id="doe" />
                         </div>
+
+                        <script>
+                            function handleUserTypeChange() {
+                                var utypeSelect = document.getElementById("utype");
+                                var doeInput = document.getElementById("doe");
+
+                                // Check if the selected value is "member"
+                                if (utypeSelect.value === "member") {
+                                    doeInput.required = true;
+                                } else {
+                                    doeInput.required = false;
+                                }
+                            }
+                        </script>
                     </div>
                     <hr />
                     <label for="username">Create Username</label><br />
