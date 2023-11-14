@@ -11,29 +11,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <body class="center">
-        <div class="headbar row">
-            <img src="pictures\CSS326BasedLib.png" alt="Logo">
-            <div class="greet-text">
-                <?php
-                    session_start();
-                    $getName = "SELECT User_FName, User_LName FROM user WHERE Username = '$username' LIMIT 1";  // only selects the first match
-                    $result = $mysqli -> query($getName);
-                    while ($row = $result -> fetch_assoc()) {
-                        echo "<p>Welcome, " . $row["User_FName"] . " " . $row["User_LName"] . "!</p><br>";
-                    }
-                ?>
-            </div>
-        </div>
-
-        <div>
+        <img src="pictures\CSS326BasedLib.png" alt="Logo" class="headbar">
+        
+        <div class="main">
             <h2>Book Reservation page</h2>			
-            <table>
-                <col width="10%">
-                <col width="20%">
-                <col width="30%">
-                <col width="30%">
-                <col width="5%">
-                <col width="5%">
+            <table style="width: 70vw">
+                <col style="width: 30%;">
+                <col style="width: 30%;">
+                <col style="width: 20%;">
+                <col style="width: 10%;">
 
                 <tr>
                     <th>Title</th> 
@@ -42,7 +28,7 @@
                     <th>ISBN</th>
                 </tr>
                 <?php
-                    $bookSelect = "SELECT Name, AuthorName, Genre, ISBN FROM book";
+                    $bookSelect = "SELECT book.Name, AuthorName, Genre, ISBN FROM book";
                     $result = $mysqli -> query($bookSelect);
                     if (!$result) {
                         echo "Select failed. Error: " . $mysqli -> error ;
@@ -50,12 +36,14 @@
                     }
                 while ($row = $result -> fetch_array()) { ?>
                 <tr>
-                    <td><?=$row[1]?></td> 
+                    <td><?=$row[0]?></td> 
+                    <td><?=$row[1]?></td>
                     <td><?=$row[2]?></td>
                     <td><?=$row[3]?></td>
-                    <td><?=$row[4]?></td>
-                    <td><a href='edit_group.php?id=<?=$row[0]?>'> <img src="images/Modify.png" width="24" height="24"></td>
-                    <td><a href='delinfo.php?id=<?=$row[0]?>'> <img src="images/Delete.png" width="24" height="24"></a></td>
+                    <td>
+                        <button>select</button>
+                        <button>remove</button>
+                    </td>
                 </tr>                               
                 <?php } ?>
 
