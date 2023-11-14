@@ -24,5 +24,46 @@
                 ?>
             </div>
         </div>
+
+        <div>
+            <h2>Book Reservation page</h2>			
+            <table>
+                <col width="10%">
+                <col width="20%">
+                <col width="30%">
+                <col width="30%">
+                <col width="5%">
+                <col width="5%">
+
+                <tr>
+                    <th>Title</th> 
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>ISBN</th>
+                </tr>
+                <?php
+                    $bookSelect = "SELECT Name, AuthorName, Genre, ISBN FROM book";
+                    $result = $mysqli -> query($bookSelect);
+                    if (!$result) {
+                        echo "Select failed. Error: " . $mysqli -> error ;
+                        return false;
+                    }
+                while ($row = $result -> fetch_array()) { ?>
+                <tr>
+                    <td><?=$row[1]?></td> 
+                    <td><?=$row[2]?></td>
+                    <td><?=$row[3]?></td>
+                    <td><?=$row[4]?></td>
+                    <td><a href='edit_group.php?id=<?=$row[0]?>'> <img src="images/Modify.png" width="24" height="24"></td>
+                    <td><a href='delinfo.php?id=<?=$row[0]?>'> <img src="images/Delete.png" width="24" height="24"></a></td>
+                </tr>                               
+                <?php } ?>
+
+            <?php 
+                // count the no. of entries
+                echo "<tr><td colspan='6' style='text-align: right;'>Total " . mysqli_num_rows($result) . " records" . "</td></tr>";
+            ?>
+            </table>	
+        </div>
     </body> 
 </html>

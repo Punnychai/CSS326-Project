@@ -80,9 +80,9 @@ body.login{
 
 .greet-text {
   position: relative;
-  top: -2.6vh;
-  left: 30vw;
-  font-size: 36px;
+  top: 3vh;
+  left: 27vw;
+  font-size: 42px;
 }
 
 .reserve {
