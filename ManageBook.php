@@ -33,8 +33,8 @@
                 <input type="text" id="ISBN" name="ISBN">
             </div>
         </div>
-        <div class="row"><input type="submit" value="Confirm"></div>
-        <div class="row"><input type="submit" value="Cancel" onclick="PopDown()"></div>
+        <input type="submit" value="Confirm" style="color: green">
+        <input type="button" value="Cancel" style="color: red" onclick="PopDown()">
     </form>
 
     <div class="manage-panel">

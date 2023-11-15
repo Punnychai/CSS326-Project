@@ -20,18 +20,23 @@
             <p>Manage Admin</p><br>
         </div>
     </div>
-    <form action="" class="popup center column" id="popup">
+    <form action="" class="popup center column add-admin" id="popup">
         <div class="row">
             <h1>Add an Admin</h1>
         </div>
         <div class="row">
             <div class="column">
                 <h2>Username</h2>
-                <input type="text" id="username" name="username">
+                <input type="text" id="admuser" name="admuser">
+                <h2>Password</h2>
+                <input type="Password" id="admpasswd" name="admpasswd">
+                <h2>Password</h2>
+                <input type="Password" id="admconfirm" name="admconfirm">
             </div>
+            
         </div>
-        <div class="row"><input type="submit" value="Confirm"></div>
-        <div class="row"><input type="submit" value="Cancel" onclick="PopDown()"></div>
+        <input type="submit" value="Confirm" style="color: green">
+        <input type="button" value="Cancel" style="color: red" onclick="PopDown()">
     </form>
 
     <div class="manage-panel">
