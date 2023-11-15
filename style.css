@@ -79,11 +79,14 @@ body.login{
   left: 3vw;
 }
 
+.headbar p{
+  font-weight: bold;
+}
+
 .greet-text {
   position: relative;
   top: 3vh;
   left: 27vw;
-  font-size: 42px;
 }
 
 .reserve {
@@ -102,7 +105,7 @@ body.login{
 }
 
 
-.reserve label, .add label, .admin td, .popup h1{
+.reserve label, .add label, .admin td, .popup h1, .greet-text{
   font-size: 5.18vh;
   font-weight: bold;
   font-family: "Inter";
@@ -187,7 +190,7 @@ input.text-field.login{
   height: 15.8vh;
 }
 
-.main {
+/* .main {
   background-color: white;
   padding: 2vw;
 }
@@ -209,7 +212,7 @@ input.text-field.login{
 }
 .main button {
   width: 100%;
-}
+} */
 
 .manage-panel{
   width: 93.77vw;
@@ -220,6 +223,14 @@ input.text-field.login{
   padding-top: 2.5vh;
   padding-left: 3vw;
   overflow-y: auto;
+}
+
+.book-panel{
+  width: 93.77vw;
+  margin-bottom: -6.3vh;
+  font-size: 5.18vh;
+  font-weight: 300;
+  font-family: "Inter";
 }
 
 .manage-panel a{
@@ -281,6 +292,12 @@ button.add{
 }
 
 .popup input#username{
+  height: 6.2vh;
+  font-size: 5.18vh;
+  font-weight: 300;
+}
+
+.popup input#borrow, .popup input#return{
   height: 6.2vh;
   font-size: 5.18vh;
   font-weight: 300;

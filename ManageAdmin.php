@@ -41,7 +41,7 @@
                 <col width="1.5%">
                 <col width="0.5%">
                 <?php
-                $q2 = "select username from user where admin_flag = 1";
+                $q2 = "select username from user where admin_flag = 0";
                 $result = $mysqli->query($q2);
                 if (!$result) {
                     echo "Select failed. Error: " . $mysqli->error;
