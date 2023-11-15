@@ -82,11 +82,11 @@
 
                 //echo "User Type: $userType<br>"; //I commented this so Im not confused
 
-                if ($userType == "Member") {
-                    echo "Member Type: $memberType<br>";
-                    echo "Faculty: $faculty<br>";
-                    echo "Date of Enrollment: $doe<br>";
-                }
+                // if ($userType == "Member") {
+                //     echo "Member Type: $memberType<br>";
+                //     echo "Faculty: $faculty<br>";
+                //     echo "Date of Enrollment: $doe<br>";
+                // }
             } else {
                 // Handle the case when the user is not logged in or session data is not set
                 echo "You are not logged in.";
