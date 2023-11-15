@@ -124,10 +124,12 @@
                                 <option value="Option 1">Option 1</option>
                                 <option value="Option 2">Option 2</option>
                             </select>
+                            <hr />
                         </div>
                         <div class="column selection-col">
                             <label for="doe">Enrolled Year</label><br />
                             <input type="date" name="doe" id="doe" />
+                            <hr />
                         </div>
 
                         <script>
@@ -144,7 +146,7 @@
                             }
                         </script>
                     </div>
-                    <hr />
+                    
                     <label for="username">Create Username</label><br />
                     <input type="text" name="username" id="username" class="text-field" required /><br />
                     <label for="passwd">Create Password</label><br />
