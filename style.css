@@ -222,15 +222,25 @@ input.text-field.login{
   margin-top: 5.5vh;
   padding-top: 2.5vh;
   padding-left: 3vw;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
 .book-panel{
   width: 93.77vw;
   margin-bottom: -6.3vh;
-  font-size: 5.18vh;
+  font-size: 3.6vh;
   font-weight: 300;
-  font-family: "Inter";
+}
+
+/* HIDE THE SCROLLBAR */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 .manage-panel a{
