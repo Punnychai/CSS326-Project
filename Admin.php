@@ -25,13 +25,13 @@
                 <br><label for="">Book reservation</label>
             </button>
         </a>
-        <a href="ManageBook.php.php" class="reserve admin">
+        <a href="ManageBook.php" class="reserve admin">
             <button>
                 <img src="pictures\pencil_icon_big.png" alt="" class="reserve-icon admin">
                 <br><label for="">Manage book</label>
             </button>
         </a>
-        <a href="ManageAdmin.php.php" class="reserve admin">
+        <a href="ManageAdmin.php" class="reserve admin">
             <button>
                 <img src="pictures\person_icon_big.png" alt="" class="reserve-icon admin">
                 <br><label for="">Manage Admin</label>

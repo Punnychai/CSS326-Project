@@ -14,7 +14,12 @@
 </head>
 
 <body class="center">
-    <?php include 'headBar.php'; ?>
+<div class="headbar">
+        <img src="pictures\CSS326BasedLib.png" alt="Logo">
+        <div class="greet-text">
+            <p>Manage Admin</p><br>
+        </div>
+    </div>
     <form action="" class="popup center column" id="popup">
         <div class="row">
             <h1>Add an Admin</h1>

@@ -264,6 +264,12 @@ button.add{
   display: none;
 }
 
+.add-book{
+  height: 90vh;
+  top: 4vh;
+  padding: 1vh 0 1vh 0;
+}
+
 .popup h1{
   color: white;
   margin: 0 0 0 0;
@@ -297,7 +303,7 @@ button.add{
   font-weight: 300;
 }
 
-.popup input#borrow, .popup input#return{
+.popup input#borrow, .popup input#return, .popup input#Name, .popup input#Author, .popup input#Genre, .popup input#ISBN{
   height: 6.2vh;
   font-size: 5.18vh;
   font-weight: 300;
