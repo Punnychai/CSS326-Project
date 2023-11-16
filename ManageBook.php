@@ -1,3 +1,5 @@
+
+
 <?php include 'connect.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +12,44 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
+    <?php
+    //include 'connect.php'; // Include the connect.php file
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Check if all fields are filled
+        if (isset($_POST['Name'], $_POST['Author'], $_POST['Genre'], $_POST['ISBN']) &&
+            !empty($_POST['Name']) && !empty($_POST['Author']) &&
+            !empty($_POST['Genre']) && !empty($_POST['ISBN'])) {
+
+            $name = $_POST['Name'];
+            $author = $_POST['Author'];
+            $genre = $_POST['Genre'];
+            $isbn = $_POST['ISBN'];
+
+            // Validate ISBN format (char(13))
+            if (strlen($isbn) === 13) {
+                // Prepare and bind the SQL statement
+                $stmt = $mysqli->prepare("INSERT INTO book (Name, AuthorName, Genre, ISBN) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $name, $author, $genre, $isbn);
+
+                // Execute the query
+                if ($stmt->execute()) {
+                    echo "New record added successfully!";
+                } else {
+                    echo "Error: " . $stmt->error;
+                }
+
+                // Close statement and connection
+                $stmt->close();
+                //$mysqli->close();
+            } else {
+                echo "ISBN should be 13 characters long.";
+            }
+        } else {
+            echo "All fields are required.";
+        }
+    }
+?>
     <body class="center">
     <div class="headbar">
         <img src="pictures\CSS326BasedLib.png" alt="Logo">
@@ -17,20 +57,20 @@
             <p>Manage Book</p><br>
         </div>
     </div>
-    <form action="" class="popup center column add-book" id="popup">
+    <form action="" class="popup center column add-book" id="popup" method="post">
         <div class="row">
             <h1>Add a new book</h1>
         </div>
         <div class="row">
             <div class="column">
                 <h2>Name</h2>
-                <input type="text" id="Name" name="Name">
+                <input type="text" id="Name" name="Name" required>
                 <h2>Author Name</h2>
-                <input type="text" id="Author" name="Author">
+                <input type="text" id="Author" name="Author" required>
                 <h2>Genre</h2>
-                <input type="text" id="Genre" name="Genre">
+                <input type="text" id="Genre" name="Genre" required>
                 <h2>ISBN</h2>
-                <input type="text" id="ISBN" name="ISBN">
+                <input type="text" id="ISBN" name="ISBN" required>
             </div>
         </div>
         <input type="submit" value="Confirm" style="color: green">
