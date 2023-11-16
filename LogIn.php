@@ -91,23 +91,23 @@
                         } else {
                             // Handle the case where the query didn't return any results or an error occurred
                             // You can display an error message or redirect to an appropriate page
-                            echo "Error. Could not find match in database";
+                            $popMessage = "Error. Could not find match in database";
                         }
                         // Redirect to the user's profile or dashboard
                         header('Location: LogIn.php'); // Replace with the actual destination page
                         exit();
                     } else {
                         // Password is incorrect
-                        echo "Incorrect password. Please try again.";
+                        $popMessage = "Incorrect password. Please try again.";
                     }
                 } else {
                     // Username does not exist
-                    echo "Username not found. Please try again or sign up.";
+                    $popMessage = "Username not found. Please try again or sign up.";
                 }
         
                 $stmt->close();
             } else {
-                echo "Error preparing statement: " . $mysqli->error;
+                $popMessage = "Error preparing statement: " . $mysqli->error;
             }
         }
         
@@ -121,7 +121,7 @@
             <img src="pictures\CSS326BasedLib.png" alt="Logo"
                 style="height: 46vh; position: relative; top: 6vh; left: 6vw">
         </div>
-        <form action="" method="post" class="login-panel">
+            <form action="" method="post" class="login-panel">
             <div class="row login">
                 <div class="column">
                     <label for="username" class="login-label">Username</label>
@@ -137,10 +137,15 @@
             </div>
 
 
-            <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;">
+            <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;" onclick="PopUp()">
             <p> Doesn't have an account yet?</p>
             <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #B165FD;">
         </form>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <?php echo $popMessage; ?>
+        <button onclick="PopDown()">Close</button>
     </div>
 </body>
 
