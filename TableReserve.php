@@ -14,17 +14,16 @@
 </head>
 
 <body class="center">
-    <form action="empty.php" class="popup center column" id="popup">
+    <form action="TableReserve.php" class="popup center column" id="popup">
         <div class="row">
             <h1>Specify Booking Time</h1>
         </div>
         <div class="row">
             <div class="column">
-                <!-- <input type="date" id="borrow" name="borrow" value="<?php echo date('Y-m-d'); ?>"> -->
                 <h2>Reserve this Table from</h2>
                 <input type="time" id="startTime" name="startTime">
                 <h2>To</h2>
-                <input type="time" id="endTime" name="endTime">
+                <input type="time" id="endTime" name="endTime" required>
             </div>
         </div>
         <div class="row"><input type="submit" value="Confirm" style="color: green"></div>

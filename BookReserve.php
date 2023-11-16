@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <form action="empty.php" class="popup center column" id="popup">
+        <form action="BookReserve.php" class="popup center column" id="popup">
             <div class="row">
                 <h1>Borrow & Return Date</h1>
             </div>

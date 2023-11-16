@@ -20,8 +20,7 @@ function getCurrentTime() {
 
 function getLimitTime() {
   const now = new Date();
-  now.setHours(now.getHours() + 4);
-  const hours = String(now.getHours()).padStart(2, '0');
+  const hours = String(now.getHours() + 4).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`;
 }
