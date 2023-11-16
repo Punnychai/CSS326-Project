@@ -9,3 +9,23 @@ function PopDown() {
   document.getElementById("overlay").style.display= "none";
   document.getElementById("logo").style.opacity=1;
 }
+
+// Get the current time in the format "HH:mm"
+function getCurrentTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  return `${hours}:${minutes}`;
+}
+
+function getLimitTime() {
+  const now = new Date();
+  now.setHours(now.getHours() + 4);
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  return `${hours}:${minutes}`;
+}
+
+document.getElementById("startTime").value = getCurrentTime();
+// The maximum reservation is 4 hours
+document.getElementById("endTime").max = getLimitTime();

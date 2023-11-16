@@ -16,14 +16,15 @@
 <body class="center">
     <form action="empty.php" class="popup center column" id="popup">
         <div class="row">
-            <h1>Select the borrow date</h1>
+            <h1>Specify Booking Time</h1>
         </div>
         <div class="row">
             <div class="column">
-                <h2>Date of borrowing</h2>
-                <input type="date" id="borrow" name="borrow" value="<?php echo date('Y-m-d'); ?>">
-                <h2>Date of return</h2>
-                <input type="date" id="return" name="return" required>
+                <!-- <input type="date" id="borrow" name="borrow" value="<?php echo date('Y-m-d'); ?>"> -->
+                <h2>Reserve this Table from</h2>
+                <input type="time" id="startTime" name="startTime">
+                <h2>To</h2>
+                <input type="time" id="endTime" name="endTime">
             </div>
         </div>
         <div class="row"><input type="submit" value="Confirm" style="color: green"></div>

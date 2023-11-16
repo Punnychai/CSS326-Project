@@ -21,7 +21,7 @@
 
         <form action="empty.php" class="popup center column" id="popup">
             <div class="row">
-                <h1>Select the borrow date</h1>
+                <h1>Borrow & Return Date</h1>
             </div>
             <div class="row">
                 <div class="column">
@@ -34,6 +34,7 @@
             <div class="row"><input type="submit" value="Confirm" style="color: green"></div>
             <div class="row"><input type="button" value="Cancel" style="color: red" onclick="PopDown()"></div>
         </form>
+        <div class="overlay" id="overlay"></div>
 
         <div class="book-panel">
             <table style="width:90%;">
