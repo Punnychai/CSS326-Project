@@ -98,16 +98,16 @@
                         exit();
                     } else {
                         // Password is incorrect
-                        $popMessage = "Incorrect password. Please try again.";
+                        echo "Incorrect password. Please try again.";
                     }
                 } else {
                     // Username does not exist
-                    $popMessage = "Username not found. Please try again or sign up.";
+                    echo "Username not found. Please try again or sign up.";
                 }
         
                 $stmt->close();
             } else {
-                $popMessage = "Error preparing statement: " . $mysqli->error;
+                echo "Error preparing statement: " . $mysqli->error;
             }
         }
         
@@ -115,37 +115,33 @@
         $mysqli->close();
     ?>
 
-    <body class="login">
-        <div class="row">
-            <div style="width: 50%;">
-                <img src="pictures\CSS326BasedLib.png" alt="Logo"
-                    style="height: 46vh; position: relative; top: 6vh; left: 6vw">
+<body class="login">
+    <div class="row">
+        <div style="width: 50%;">
+            <img src="pictures\CSS326BasedLib.png" alt="Logo"
+                style="height: 46vh; position: relative; top: 6vh; left: 6vw">
+        </div>
+        <form action="" method="post" class="login-panel">
+            <div class="row login">
+                <div class="column">
+                    <label for="username" class="login-label">Username</label>
+                    <input type="text" name="username" id="username" class="text-field login" />
+                </div>
             </div>
-                <form action="" method="post" class="login-panel">
-                <div class="row login">
-                    <div class="column">
-                        <label for="username" class="login-label">Username</label>
-                        <input type="text" name="username" id="username" class="text-field login" />
-                    </div>
+            <div class="row login">
+                <div class="column">
+                <label for="passwd" class="login-label">Password</label>
+                <input type="password" name="passwd" id="passwd" class="text-field login" />
                 </div>
-                <div class="row login">
-                    <div class="column">
-                    <label for="passwd" class="login-label">Password</label>
-                    <input type="password" name="passwd" id="passwd" class="text-field login" />
-                    </div>
-                    
-                </div>
+                
+            </div>
 
 
-                <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;" onclick="PopUp()">
-                <p> Doesn't have an account yet?</p>
-                <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #B165FD;">
-            </form>
-        </div>
-        <div class="overlay" id="overlay"></div>
-        <div class="popup" id="popup">
-            <?php echo $popMessage; ?>
-            <button onclick="PopDown()">Close</button>
-        </div>
-    </body>
+            <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;">
+            <p> Doesn't have an account yet?</p>
+            <input type="submit" class="btn-login" name="SignUp" value="SIGN UP" style="background-color: #B165FD;">
+        </form>
+    </div>
+</body>
+
 </html>
