@@ -263,6 +263,8 @@ button.add{
 }
 
 .popup {
+  z-index: 3;
+  position: relative;
   padding: 0 0 0 0;
   width: 40vw;
   height: 65vh;
@@ -332,6 +334,7 @@ button.add{
 }
 
 .overlay{
+  z-index: 2;
   background: white;
   height: 100vh;
   width: 100vw;
@@ -340,7 +343,121 @@ button.add{
   display: none;
 }
 
+.table-panel{
+  background-color: white;
+  width: 78.18vw;
+  height: 87.31vh;
+  border-radius: 47px;
+}
 
+.table{
+  z-index: 1;
+  position: fixed;
+  width: 10.2vw;
+  height: 11.76vh;
+  background-color: #BCEEB3;
+  border: none;
+  border-radius: 14px;
+  font-size: 2.96vh;
+  font-weight: bold;
+  color: #508048;
+  font-family: Inter;
+}
+
+.table.reserved{
+background-color: #F3A391;
+color: #805248;
+}
+
+.table#table1{
+  
+  left: 7.92vw;
+  top: 14.44vh;
+}
+.table#table2{
+  
+  left: 7.92vw;
+  top: 33.24vh;
+}
+.table#table3{
+  
+  left: 7.92vw;
+  top: 52.04vh;
+}
+.table#table4{
+  
+  left: 7.92vw;
+  top: 70.84vh;
+}
+.table#table5{
+  
+  left: 32.18vw;
+  top: 11.11vh;
+  width: 19.35vh;
+  height: 19.35vh;
+  border-radius: 100%;
+}
+.table#table6{
+  
+  left: 48.75vw;
+  top: 11.11vh;
+  width: 19.35vh;
+  height: 19.35vh;
+  border-radius: 100%;
+}
+.table#table7{
+  
+  left: 65.32vw;
+  top: 11.11vh;
+  width: 19.35vh;
+  height: 19.35vh;
+  border-radius: 100%;
+}
+.table#table8{
+  
+  left: 65.32vw;
+  top: 39.63vh;
+  width: 19.35vh;
+  height: 19.35vh;
+  border-radius: 100%;
+}
+.table#table9{
+  
+  left: 65.32vw;
+  top: 68.15vh;
+  width: 19.35vh;
+  height: 19.35vh;
+  border-radius: 100%;
+}
+.table#table10{
+  
+  left: 30.21vw;
+  top: 44.81vh;
+  width: 24.95vw;
+  height: 15.37vh;
+}
+.table#table11{
+  
+  left: 30.21vw;
+  top: 68.52vh;
+  width: 24.95vw;
+  height: 15.37vh;
+}
+
+.icon-container{
+  margin-left: 4.06vw;
+  background-color: white;
+  height: 200px;
+  width: 200px;
+  border-radius: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-container img{
+  max-height: 57%;
+}
 
   @media (max-width: 600px) {
       .column {

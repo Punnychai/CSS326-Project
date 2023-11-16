@@ -6,4 +6,6 @@ function PopUp() {
   
 function PopDown() {
   document.getElementById("popup").style.display = "none";
+  document.getElementById("overlay").style.display= "none";
+  document.getElementById("logo").style.opacity=1;
 }
