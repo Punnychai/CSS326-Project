@@ -12,6 +12,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
+<?php
+    //include 'connect.php'; // Include the connect.php file
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['admuser'], $_POST['admpasswd']) && !empty($_POST['admuser']) && !empty($_POST['admpasswd'])) {
+            // Retrieve username and password from the form
+            $username = $_POST['admuser'];
+            $password = $_POST['admpasswd'];
+
+            // Prepare and execute a query to retrieve User_ID from login table
+            $stmt = $mysqli->prepare("SELECT User_ID FROM login WHERE Username = ? AND Password = ?");
+            $stmt->bind_param("ss", $username, $password);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows === 1) {
+                // Fetch the User_ID from the login table
+                $row = $result->fetch_assoc();
+                $user_id = $row['User_ID'];
+
+                // Update Admin_Flag in the user table
+                $update_stmt = $mysqli->prepare("UPDATE user SET Admin_Flag = 1 WHERE User_ID = ?");
+                $update_stmt->bind_param("i", $user_id);
+                $update_success = $update_stmt->execute();
+
+                if ($update_success) {
+                    echo "Admin flag updated successfully for User_ID: $user_id";
+                } else {
+                    echo "Failed to update admin flag for User_ID: $user_id";
+                }
+                
+                $update_stmt->close();
+            } else {
+                echo "Invalid username or password";
+            }
+
+            // Close statement and connection
+            //$stmt->close();
+        } else {
+            echo "Please provide both username and password";
+        }
+    }
+?>
 
 <body class="center">
 <div class="headbar">
@@ -20,7 +63,7 @@
             <p>Manage Admin</p><br>
         </div>
     </div>
-    <form action="" class="popup center column add-admin" id="popup">
+    <form action="" class="popup center column add-admin" id="popup" method="post">
         <div class="row">
             <h1>Add an Admin</h1>
         </div>
@@ -30,8 +73,6 @@
                 <input type="text" id="admuser" name="admuser">
                 <h2>Password</h2>
                 <input type="Password" id="admpasswd" name="admpasswd">
-                <h2>Password</h2>
-                <input type="Password" id="admconfirm" name="admconfirm">
             </div>
             
         </div>
@@ -51,7 +92,7 @@
                 <col width="1.5%">
                 <col width="0.5%">
                 <?php
-                $q2 = "select username from user where admin_flag = 0";
+                $q2 = "select username from user where admin_flag = 1";
                 $result = $mysqli->query($q2);
                 if (!$result) {
                     echo "Select failed. Error: " . $mysqli->error;
