@@ -70,9 +70,9 @@
         <div class="row">
             <div class="column">
                 <h2>Username</h2>
-                <input type="text" id="admuser" name="admuser">
+                <input type="text" id="admuser" name="admuser" required>
                 <h2>Password</h2>
-                <input type="Password" id="admpasswd" name="admpasswd">
+                <input type="Password" id="admpasswd" name="admpasswd" required>
             </div>
             
         </div>
@@ -105,13 +105,11 @@
                                 <?= $row[0] ?>
                             </p>
                         </td>
-                        <td><a href='edit_admin.php?id=<?= $row[0] ?>'>
-                                <p>Edit</p>
-                            </a></td>
-                        <td>|</td>
-                        <td><a href='deladmin.php?id=<?= $row[0] ?>'>
+                        <td>
+                            <a href='deladmin.php?id=<?= $row[0] ?>'>
                                 <p>Remove</p>
-                            </a></td>
+                            </a>
+                        </td>
                     </tr>
                 <?php } ?>
             </table>
