@@ -32,8 +32,8 @@
         <?php
             // Check if the 'Confirm' button is pressed -- DOESN'T WORK YET
             // if (isset($_POST['Confirm'])) {
-                echo '<div style="display: flex; background-color: #4ca82c" class="popError center column" id="popup2">' .
-                    '<h2>Success!</h2>' .
+                echo '<div style="display: flex; background-color: #4ca82c" class="popSuccess center column" id="popup2">' .
+                    '<h1>Success!</h1>' .
                     '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay2"></div>';
             // }

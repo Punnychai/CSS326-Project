@@ -288,7 +288,7 @@ button.add{
   display: none;
 }
 
-.popError {
+.popError, .popSuccess {
   z-index: 3;
   position: relative;
   padding: 0;
@@ -304,23 +304,29 @@ button.add{
 
 .popup h1 {
   color: white;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
-.popup h2 {
+.popSuccess h1 {
+  color: white;
+  font-size: 8.89vh;
+  margin: 0;
+}
+
+.popup h2, .popSuccess h2 {
   font-size: 5vh;
   font-family: "Inter";
   font-weight: 500;
   color: white;
-  margin: 0 0 0 0;
+  margin: 0;
 }
 
-.popup .column, .popError .column {
+.popup .column {
   width: 100%;
   text-align: center;
 }
 
-.popup input {
+.popup input, .popSuccess input {
   border-radius: 35px;
   color: black;
   font-weight: bold;
@@ -474,11 +480,11 @@ color: #805248;
   max-height: 57%;
 }
 
-  @media (max-width: 600px) {
-      .column {
-        width: 100%;
-      }
-      .row{
-        display: block;
-      }
-  }
+/* @media (max-width: 600px) {
+    .column {
+      width: 100%;
+    }
+    .row{
+      display: block;
+    }
+} */

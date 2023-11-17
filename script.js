@@ -27,9 +27,11 @@ function getCurrentTime() {
 }
 
 function getLimitTime() {
-  const now = new Date();
-  const hours = String(now.getHours() + 4).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const startTimeString = document.getElementById("startTime").value;
+  const startTime = new Date(`2000-01-01T${startTimeString}`);
+  
+  const hours = String(startTime.getHours() + 4).padStart(2, '0');
+  const minutes = String(startTime.getMinutes()).padStart(2, '0');
   return `${hours}:${minutes}`;
 }
 
