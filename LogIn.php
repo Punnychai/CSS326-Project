@@ -13,6 +13,8 @@
 
     <?php
         session_start();
+        unset($_SESSION['popMessage']);
+
         $username = $_POST['username'];
         $password = $_POST['passwd'];
         if (isset($_POST['SignUp'])) {
@@ -37,7 +39,6 @@
         
                     // Verify the password
                     if ($password==$dbPassword) {
-                        // Password is correct
         
                         // Store the user's ID in the session to indicate they are logged in
                         $_SESSION['user_id'] = $user_id;
@@ -89,34 +90,51 @@
                                 header('Location: User.php');
                             }
                             exit(); // Make sure no further code is executed
-                        } else {
-                            // Handle the case where the query didn't return any results or an error occurred
-                            // You can display an error message or redirect to an appropriate page
-                            $popMessage = "Error. Could not find match in database";
                         }
-                        // Redirect to the user's profile or dashboard
-                        header('Location: LogIn.php'); // Replace with the actual destination page
-                        exit();
-                    } else {
-                        // Password is incorrect
-                        echo "Incorrect password. Please try again.";
+                        else {
+                            // Error fetching the result
+                            $_SESSION['popMessage'] = "Error. Could not find match in database";
+                            echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                                '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                        }
                     }
-                } else {
-                    // Username does not exist
-                    echo "Username not found. Please try again or sign up.";
+                    else {
+                        // Password is incorrect
+                        $_SESSION['popMessage'] = "Incorrect password. Please try again.";
+                        echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                            '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                            '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                            '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                    }
                 }
-        
+                else {
+                    // Username does not exist
+                    $_SESSION['popMessage'] = "Username not found. Please try again or sign up.";
+                    echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                        '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                        '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                        '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                }
                 $stmt->close();
-            } else {
-                echo "Error preparing statement: " . $mysqli->error;
+            }
+            else {
+                $_SESSION['popMessage'] =  "Error preparing statement: " . $mysqli->error;
+                echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                    '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                
             }
         }
-        
         // Close the database connection
         $mysqli->close();
     ?>
 
     <body class="login">
+        <script src="script.js"></script>
+
         <div class="row">
             <div style="width: 50%;">
                 <img src="pictures\CSS326BasedLib.png" alt="Logo"
@@ -133,10 +151,8 @@
                     <div class="column">
                     <label for="passwd" class="login-label">Password</label>
                     <input type="password" name="passwd" id="passwd" class="text-field login" />
-                    </div>
-                    
+                    </div>      
                 </div>
-
 
                 <input type="submit" class="btn-login" name="LogIn" value="LOG IN" style="background-color: #4CA82C;">
                 <p> Doesn't have an account yet?</p>
