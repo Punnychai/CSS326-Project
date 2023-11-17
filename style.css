@@ -262,6 +262,18 @@ button.add{
   height: 11.7vh;
 }
 
+.add-book {
+  height: 90vh;
+  top: 4vh;
+  padding: 1vh 0;
+}
+
+.add-admin {
+  height: 80vh;
+  top: 4vh;
+  padding: 1vh 0;
+}
+
 .popup {
   z-index: 3;
   position: relative;
@@ -290,24 +302,12 @@ button.add{
   display: none;
 }
 
-.add-book {
-  height: 90vh;
-  top: 4vh;
-  padding: 1vh 0;
-}
-
-.add-admin {
-  height: 80vh;
-  top: 4vh;
-  padding: 1vh 0;
-}
-
-.popup h1{
+.popup h1 {
   color: white;
   margin: 0 0 0 0;
 }
 
-.popup h2{
+.popup h2 {
   font-size: 5vh;
   font-family: "Inter";
   font-weight: 500;
@@ -315,12 +315,12 @@ button.add{
   margin: 0 0 0 0;
 }
 
-.popup .column{
+.popup .column, .popError .column {
   width: 100%;
   text-align: center;
 }
 
-.popup input{
+.popup input {
   border-radius: 35px;
   color: black;
   font-weight: bold;
@@ -329,14 +329,14 @@ button.add{
   font-size: 8.89vh;
 }
 
-.popup input#username{
+.popup input#username {
   height: 6.2vh;
   font-size: 5.18vh;
   font-weight: 300;
 }
 
 .popup input#borrow, .popup input#return, .popup input#startTime, .popup input#endTime,
-.popup input#Name, .popup input#Author, .popup input#Genre, .popup input#ISBN{
+.popup input#Name, .popup input#Author, .popup input#Genre, .popup input#ISBN {
   height: 6.2vh;
   font-size: 5.18vh;
   font-weight: 300;
