@@ -54,7 +54,7 @@
     ?>
 
     <body class="center">
-    <div class="headbar">
+        <div class="headbar">
             <img src="pictures\CSS326BasedLib.png" alt="Logo">
             <div class="greet-text">
                 <p>Manage Admin</p><br>
@@ -113,12 +113,12 @@
                         $Username = $_GET['Username'];
                         if (isset($Username)) {
                             $q="UPDATE user SET Admin_Flag = 0 WHERE Username = '$Username'";
-                            if(!$mysqli->query($q)){
+                            if(!$mysqli->query($q)) {
                                 echo "DELETE failed. Error: ".$mysqli->error ;
                             }
                             //redirect
                             header("Location: ManageAdmin.php");
-                            unset($Username);
+                            unset($Username);   
                             exit();
                         }
                     ?>
