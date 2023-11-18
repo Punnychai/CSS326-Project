@@ -19,23 +19,6 @@
             </div>
         </div>
 
-        <form action="BookReserve.php" class="popup center column" id="popup">
-            <div class="row">
-                <h1>Borrow & Return Date</h1>
-            </div>
-            <div class="row">
-                <div class="column">
-                    <h2>Date of borrowing</h2>
-                    <input type="date" id="borrow" name="borrow" value="<?php echo date('Y-m-d'); ?>">
-                    <h2>Date of return</h2>
-                    <input type="date" id="return" name="return" required>
-                </div>
-            </div>
-            <div class="row"><input type="submit" value="Confirm" style="color: green"></div>
-            <div class="row"><input type="button" value="Cancel" style="color: red" onclick="PopDown()"></div>
-        </form>
-        <div class="overlay" id="overlay"></div>
-
         <div class="book-panel">
             <table style="width:90%;">
                 <tr>
@@ -48,7 +31,6 @@
         </div>
             
         <div class="manage-panel">
-            
             <div class="book-panel">
                 <table style="width:96%;">
                     <col width="25%">
@@ -64,7 +46,7 @@
                         return false;
                     }
                     while ($row = $result->fetch_array()) { ?>
-                        <tr onclick="PopUp()">
+                        <tr onclick="gotoPage('BookProcess.php')">
                             <td>
                                 <p><?= $row[0] ?></p>
                             </td>
@@ -82,7 +64,7 @@
                 </table>
             </div>
         </div>
-        
+
         <script src="script.js"></script>
     </body>
 </html>
