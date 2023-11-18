@@ -82,7 +82,6 @@
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="gotoPage(\'ManageBook.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-
                         }
                         else {
                             $_SESSION['popMessage'] =  "Error: " . $stmt->error;
