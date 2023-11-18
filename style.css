@@ -262,10 +262,36 @@ button.add {
   height: 11.7vh;
 }
 
-.add-book {
+/* .add-book {
   height: 90vh;
   top: 4vh;
   padding: 1vh 0;
+} */
+
+.add-book{
+  color: #B165FD;
+  font-size: 5.92vh;
+  font-weight: 300;
+  font-family: "Inter";
+  padding: 4.72vh 0 0 5.3vw;
+  width: 96.77vw;
+  margin: 3vh 1.19vw 0 1.19vw;
+}
+
+.add-book input{
+  color: white;
+  background-color: #B165FD;
+  width: 100%;
+  border-radius: 4.6vh;
+}
+
+.add-book input#submit-button{
+  width: 31.56vw;
+  height: 13.43vh;
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 8.9vh;
+  border-radius: 4.6vh;
 }
 
 .add-admin {
