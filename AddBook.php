@@ -56,7 +56,6 @@
 
         <?php
             session_start();
-            unset($_SESSION['popMessage']);
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Check if all fields are filled
@@ -77,16 +76,17 @@
 
                         // Execute the query
                         if ($stmt->execute()) {
-                            echo "New Book has been added!";
-                            $_SESSION['popMessage'] =  "Error preparing statement: " . $mysqli->error;
-                            echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                            // THERE'S SOME STYLE ISSUE HERE, FIX IT.
+                            $_SESSION['popMessage'] =  "New Book has been added!";
+                            echo '<div style="display: flex; background-color: green;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                                '<input type="button" value="Close" onclick="gotoPage(\'ManageBook.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+
                         }
                         else {
                             $_SESSION['popMessage'] =  "Error: " . $stmt->error;
-                            echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                            echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
@@ -95,22 +95,18 @@
                         // Close statement and connection
                         $stmt->close();
                         //$mysqli->close();
-
-                        // Redirect and Exit
-                        header('Location: ManageBook.php');
-                        exit();
                     }
                     else {
                         $_SESSION['popMessage'] =  "ISBN should be 13 characters long.";
-                            echo '<div style="display: flex;" class="popError center column" id="popup">' .
-                                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
-                                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                        echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
+                            '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                            '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                            '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                     }
                 }
                 else {
                     $_SESSION['popMessage'] =  "All fields are required.";
-                    echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                    echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                         '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';

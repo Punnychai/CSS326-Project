@@ -12,14 +12,6 @@
     </head>
 
     <body class="center">
-        <?php
-            if (isset($_SESSION['popMessage'])) {
-                echo '<div style="display: flex;" class="popError center column" id="popup">' .
-                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                    '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
-                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-            }
-        ?>
         <div class="headbar">
             <img src="pictures\CSS326BasedLib.png" alt="Logo">
             <div class="greet-text">
