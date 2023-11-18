@@ -269,7 +269,7 @@ button.add {
 } */
 
 .add-book{
-  color: #B165FD;
+  color: #000;
   font-size: 5.92vh;
   font-weight: 300;
   font-family: "Inter";
@@ -292,6 +292,16 @@ button.add {
   font-weight: bold;
   font-size: 8.9vh;
   border-radius: 4.6vh;
+}
+
+.add-book input.conBT {
+  color: green;
+  background-color: white;
+}
+
+.add-book input.canBT {
+  color: red;
+  background-color: white;
 }
 
 .add-admin {

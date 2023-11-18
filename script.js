@@ -18,6 +18,10 @@ function PopDown() {
   document.getElementById("logo").style.opacity=1;
 }
 
+function gotoPage(url) {
+  window.location.href = url;
+}
+
 // Get the current time in the format "HH:mm"
 function getCurrentTime() {
   const now = new Date();
