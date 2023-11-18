@@ -102,7 +102,8 @@
                     }
                     else {
                         // Password is incorrect
-                        $_SESSION['popMessage'] = "Incorrect password. Please try again.";
+                        // $_SESSION['popMessage'] = "Incorrect password. Please try again.";
+                        $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
                         echo '<div style="display: flex;" class="popError center column" id="popup">' .
                             '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                             '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
@@ -111,7 +112,8 @@
                 }
                 else {
                     // Username does not exist
-                    $_SESSION['popMessage'] = "Username not found. Please try again or sign up.";
+                    // $_SESSION['popMessage'] = "Username not found. Please try again or sign up.";
+                    $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
                     echo '<div style="display: flex;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                         '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
