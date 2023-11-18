@@ -55,7 +55,7 @@
                 <p>Manage Book</p><br>
             </div>
         </div>
-        <form action="" class="popup center column add-book" id="popup" method="post">
+        <!-- <form action="" class="popup center column add-book" id="popup" method="post">
             <div class="row">
                 <h1>Add a new book</h1>
             </div>
@@ -73,13 +73,19 @@
             </div>
             <input type="submit" value="Confirm" style="color: green">
             <input type="button" value="Cancel" style="color: red" onclick="PopDown()">
-        </form>
+        </form> -->
 
         <div class="manage-panel">
-            <button class="add" onclick="PopUp()">
+            <button class="add" onclick="goAddBook()">
                 <img src="pictures\add_icon_big.png" alt="" class="add-icon">
                 <label for="">Add</label>
             </button>
+            <script>
+                function goAddBook() {
+                    window.location.href = 'AddBook.php';
+                }
+            </script>
+
             <div id="" class="admin">
                 <!--%%%%% Main block %%%%-->
                 <table style="width:96%;">

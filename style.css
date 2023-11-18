@@ -243,12 +243,12 @@ input.text-field.login{
   scrollbar-color: transparent transparent;
 }
 
-.manage-panel a{
+.manage-panel a {
   color: black;
   text-decoration: none;
 }
 
-button.add{
+button.add {
   width: 13.6vw;
   background: none;
   border: none;
