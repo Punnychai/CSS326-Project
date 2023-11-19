@@ -11,68 +11,88 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
+
     <?php
-    //include 'connect.php';
+        session_start();
 
-    session_start(); // Start the session if not already started
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['bID'])) {
+            // Retrieve the bID from the URL parameter
+            $bookID = $_GET['bID'];
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['bID'])) {
-        // Retrieve the bID from the URL parameter
-        $bookID = $_GET['bID'];
+            // Prepare and execute the SQL SELECT query
+            $selectQuery = "SELECT ISBN, Name, AuthorName, Genre FROM book WHERE Book_ID = ?";
+            $stmt = $mysqli->prepare($selectQuery);
 
-        // Prepare and execute the SQL SELECT query
-        $selectQuery = "SELECT ISBN, Name, AuthorName, Genre FROM book WHERE Book_ID = ?";
-        $stmt = $mysqli->prepare($selectQuery);
+            if ($stmt) {
+                $stmt->bind_param("i", $bookID);
+                $stmt->execute();
+                $stmt->bind_result($ISBN, $name, $authorName, $genre);
 
-        if ($stmt) {
-            $stmt->bind_param("i", $bookID);
-            $stmt->execute();
-            $stmt->bind_result($ISBN, $name, $authorName, $genre);
+                // Fetch the results
+                $stmt->fetch();
 
-            // Fetch the results
-            $stmt->fetch();
-
-            // Close the statement
-            $stmt->close();
-        } else {
-            // Error in preparing the statement
-            echo "Error: Unable to prepare SQL statement.";
-        }
-    } else {
-        // Handle the case when 'bID' is missing or the request method is not GET
-        echo "Book ID missing or Update: ";
-    }
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['bID'])) {
-        // Retrieve form data
-        $bookID = $_GET['bID'];
-        $name = $_POST['Name'];
-        $authorName = $_POST['Author'];
-        $genre = $_POST['Genre'];
-        $ISBN = $_POST['ISBN'];
-
-        // Update the book details in the database
-        $updateQuery = "UPDATE book SET Name = ?, AuthorName = ?, Genre = ?, ISBN = ? WHERE Book_ID = ?";
-        $stmt = $mysqli->prepare($updateQuery);
-
-        if ($stmt) {
-            $stmt->bind_param("ssssi", $name, $authorName, $genre, $ISBN, $bookID);
-            $stmt->execute();
-
-            if ($stmt->affected_rows > 0) {
-                // Successful update
-                echo "Book details updated successfully.";
+                // Close the statement
+                $stmt->close();
             } else {
-                // No rows affected, probably no changes made
-                echo "No changes were made to the book details.";
+                // Error in preparing the statement
+                $_SESSION['popMessage'] =  "Error: Unable to prepare SQL statement.";
+                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
             }
-
-            $stmt->close();
-            header('Location: ManageBook.php');
         } else {
-            // Error in preparing the statement
-            echo "Error: Unable to prepare SQL statement.";
+            // Handle the case when 'bID' is missing or the request method is not GET
+            $_SESSION['popMessage'] =  "Book ID missing or Update: ";
+            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+            
         }
-    }
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['bID'])) {
+            // Retrieve form data
+            $bookID = $_GET['bID'];
+            $name = $_POST['Name'];
+            $authorName = $_POST['Author'];
+            $genre = $_POST['Genre'];
+            $ISBN = $_POST['ISBN'];
+
+            // Update the book details in the database
+            $updateQuery = "UPDATE book SET Name = ?, AuthorName = ?, Genre = ?, ISBN = ? WHERE Book_ID = ?";
+            $stmt = $mysqli->prepare($updateQuery);
+
+            if ($stmt) {
+                $stmt->bind_param("ssssi", $name, $authorName, $genre, $ISBN, $bookID);
+                $stmt->execute();
+
+                if ($stmt->affected_rows > 0) {
+                    // Successful update
+                    $_SESSION['popMessage'] =  "Book details updated successfully!";
+                    echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
+                        '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                        '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                        '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                } else {
+                    // No rows affected, probably no changes made
+                    $_SESSION['popMessage'] =  "No changes were made to the book details.";
+                    echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
+                        '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                        '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                        '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                }
+
+                $stmt->close();
+                header('Location: ManageBook.php');
+            } else {
+                // Error in preparing the statement
+                $_SESSION['popMessage'] =  "Error: Unable to prepare SQL statement.";
+                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+            }
+        }
     ?>
 
     <body class="center">
