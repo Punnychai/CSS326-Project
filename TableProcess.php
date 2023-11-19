@@ -11,6 +11,54 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
+    <?php
+    //include 'connect.php';
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_GET['tableNo']) && isset($_POST['startTime']) && isset($_POST['endTime'])) {
+            $tableNo = $_GET['tableNo'];
+            $startTime = $_POST['startTime'];
+            $endTime = $_POST['endTime'];
+
+            // Get user ID from session
+            if (isset($_SESSION['user_id'])) {
+                $userID = $_SESSION['user_id'];
+
+                // Insert into TableReservation table
+                $insertQuery = "INSERT INTO TableReservation (U_ID, TableNo, ReservationDate, EndDate) VALUES (?, ?, ?, ?)";
+                $stmt = $mysqli->prepare($insertQuery);
+
+                if ($stmt) {
+                    // Assuming ReservationDate corresponds to $startTime
+                    $reservationDate = date('Y-m-d') . ' ' . $startTime;
+
+                    // Combining date and time for end time
+                    $endDate = date('Y-m-d') . ' ' . $endTime;
+
+                    $stmt->bind_param("iiss", $userID, $tableNo, $reservationDate, $endDate);
+                    $stmt->execute();
+
+                    if ($stmt->affected_rows > 0) {
+                        echo "Reservation successful!";
+                        header('Location: TableReserve.php');
+                        
+                    } else {
+                        echo "Reservation failed.";
+                    }
+
+                    $stmt->close();
+                } else {
+                    echo "Error: Unable to prepare SQL statement.";
+                }
+            } else {
+                echo "User ID not found in session.";
+            }
+        } else {
+            echo "Incomplete data provided.";
+        }
+    }
+    ?>
 
     <body class="center">
         <div class="headbar">
@@ -24,7 +72,7 @@
                 <div class="column">
                     <h2>Reserve this Table from</h2>
                     <input type="time" id="startTime" name="startTime">
-                    <h2>To</h2>
+                    <h2>to</h2>
                     <input type="time" id="endTime" name="endTime" required>
                 </div>
             </div>
