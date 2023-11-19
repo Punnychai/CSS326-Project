@@ -94,9 +94,9 @@
                         else {
                             // Error fetching the result
                             $_SESSION['popMessage'] = "Error. Could not find match in database";
-                            echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                                '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                         }
                     }
@@ -104,9 +104,9 @@
                         // Password is incorrect
                         // $_SESSION['popMessage'] = "Incorrect password. Please try again.";
                         $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
-                        echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                        echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                             '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                            '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                            '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
                             '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                     }
                 }
@@ -114,20 +114,19 @@
                     // Username does not exist
                     // $_SESSION['popMessage'] = "Username not found. Please try again or sign up.";
                     $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
-                    echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                    echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                        '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                        '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                 }
                 $stmt->close();
             }
             else {
                 $_SESSION['popMessage'] =  "Error preparing statement: " . $mysqli->error;
-                echo '<div style="display: flex;" class="popError center column" id="popup">' .
+                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                     '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                    '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
+                    '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
                     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-                
             }
         }
         // Close the database connection
