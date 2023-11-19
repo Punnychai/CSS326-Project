@@ -19,10 +19,7 @@
                 <p>Table Reservation</p><br>
             </div>
         </div>
-        <form action="" class="manage-panel add-book" method="post">
-            <div class="row">
-                <h1>Specify Booking Time</h1>
-            </div>
+        <form action="" class="manage-panel process-items center" method="post">
             <div class="row">
                 <div class="column">
                     <h2>Reserve this Table from</h2>

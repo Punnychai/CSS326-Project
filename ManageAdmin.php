@@ -31,8 +31,8 @@
                 </div>
                 
             </div>
-            <input type="submit" value="Confirm" style="color: green">
-            <input type="button" value="Cancel" style="color: red" onclick="PopDown()">
+            <input type="submit" value="Confirm" style="color: #4CA82C">
+            <input type="button" value="Cancel" style="color: #F3A391" onclick="PopDown()">
         </form>
 
         <div class="manage-panel">
@@ -110,7 +110,7 @@
                         if ($update_success) {
                             // DON'T TOUCH THIS PORTION, IT ALREADY WORKS FINE.
                             $_SESSION['popMessage'] =  "Admin flag updated successfully for User_ID: $user_id";
-                            echo '<div style="display: flex; background-color: green;" class="popError center column" id="popup">' .
+                            echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
@@ -119,7 +119,7 @@
                         else {
                             // THERE'S SOME STYLE ISSUE HERE, FIX IT.
                             $_SESSION['popMessage'] =  "Failed to update admin flag for User_ID: $user_id";
-                            echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
+                            echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
@@ -131,7 +131,7 @@
                     else {
                         // THERE'S SOME STYLE ISSUE HERE, FIX IT.
                         $_SESSION['popMessage'] =  "Invalid Username or Password.";
-                        echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
+                        echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                             '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                             '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
                             '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
@@ -143,7 +143,7 @@
                 }
                 else {
                     $_SESSION['popMessage'] =  "All fields are required.";
-                    echo '<div style="display: flex; background-color: red;" class="popError center column" id="popup">' .
+                    echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                         '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';

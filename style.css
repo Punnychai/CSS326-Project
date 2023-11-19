@@ -248,6 +248,22 @@ input.text-field.login{
   text-decoration: none;
 }
 
+.process-items{
+  color: #000;
+  font-size: 5.92vh;
+  font-weight: 300;
+  font-family: "Inter";
+  padding: 0;
+  width: 96.77vw;
+  margin: 3vh 1.19vw 0 1.19vw;
+}
+
+.process-items .row{
+  width: 71vw;
+  justify-content: center;
+  text-align: center;
+}
+
 button.add {
   width: 13.6vw;
   background: none;
@@ -278,14 +294,14 @@ button.add {
   margin: 3vh 1.19vw 0 1.19vw;
 }
 
-.add-book input{
+.add-book input, .process-items input{
   color: white;
   background-color: #B165FD;
   width: 100%;
   border-radius: 4.6vh;
 }
 
-.add-book input#submit-button{
+.add-book input#submit-button, .process-items input#submit-button{
   width: 31.56vw;
   height: 13.43vh;
   font-family: "Inter";
@@ -294,13 +310,13 @@ button.add {
   border-radius: 4.6vh;
 }
 
-.add-book input.conBT {
-  color: green;
+.add-book input.conBT, .process-items input.conBT{
+  color: #4CA82C;
   background-color: white;
 }
 
-.add-book input.canBT {
-  color: red;
+.add-book input.canBT, .process-items input.canBT{
+  color: #E46060;
   background-color: white;
 }
 
@@ -327,7 +343,7 @@ button.add {
 .popError, .popSuccess {
   z-index: 3;
   position: relative;
-  padding: 0;
+  padding: 3vh 3vw 3vh 3vw;
   width: 40vw;
   height: 35vh;
   position: fixed;
@@ -336,6 +352,16 @@ button.add {
   background-color: white;
   border-radius: 20px;
   display: none;
+  font-family: "Inter";
+  font-weight: 500;
+}
+
+.popError h2, .popError input, .popSuccess h2, .popSuccess input{
+  width: 70%;
+  text-align: center;
+  font-family: "Inter";
+  font-size: 5vh;
+  font-weight: 500;
 }
 
 .popup h1 {
@@ -418,7 +444,7 @@ button.add {
   font-size: 2.96vh;
   font-weight: bold;
   color: #508048;
-  font-family: Inter;
+  font-family: "Inter";
 }
 
 .table.reserved{
