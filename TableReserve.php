@@ -42,9 +42,16 @@
                 $tableNo = $table['TableNo'];
                 $bookedFlag = $table['BookedFlag'];
                 $buttonClass = ($bookedFlag == 1) ? 'table reserved' : 'table';
-                
-                echo '<button onclick="gotoPage(\'TableProcess.php?tableNo=' . $tableNo . '\')" class="' . $buttonClass . '" id="table' . $tableNo . '">Table ' . $tableNo . '</button>';
+            
+                // Render button without link if BookedFlag is 1
+                if ($bookedFlag == 1) {
+                    echo '<button class="' . $buttonClass . '" id="table' . $tableNo . '">Table ' . $tableNo . '</button>';
+                } else {
+                    echo '<button onclick="gotoPage(\'TableProcess.php?tableNo=' . $tableNo . '\')" class="' . $buttonClass . '" id="table' . $tableNo . '">Table ' . $tableNo . '</button>';
+                }
             }
+            
+            
             
             echo '</div>';
             echo '<div class="icon-container">';
