@@ -39,14 +39,14 @@
                     <col width="25%">
 
                     <?php
-                    $bookSelect = "SELECT book.Name, AuthorName, Genre, ISBN FROM book";
+                    $bookSelect = "SELECT book.Name, AuthorName, Genre, ISBN, Book_ID FROM book";
                     $result = $mysqli->query($bookSelect);
                     if (!$result) {
                         echo "Select failed. Error: " . $mysqli->error;
                         return false;
                     }
                     while ($row = $result->fetch_array()) { ?>
-                        <tr onclick="gotoPage('BookProcess.php')">
+                        <tr onclick="gotoPageWithID('BookProcess.php', <?= $row['Book_ID'] ?>)">
                             <td>
                                 <p><?= $row[0] ?></p>
                             </td>

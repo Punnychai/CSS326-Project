@@ -22,6 +22,10 @@ function gotoPage(url) {
   window.location.href = url;
 }
 
+function gotoPageWithID(url, bookID) {
+  window.location.href = `${url}?id=${bookID}`;
+}
+
 // Get the current time in the format "HH:mm"
 function getCurrentTime() {
   const now = new Date();
