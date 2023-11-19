@@ -76,15 +76,14 @@
 
                         // Execute the query
                         if ($stmt->execute()) {
-                            // THERE'S SOME STYLE ISSUE HERE, FIX IT.
-                            $_SESSION['popMessage'] =  "New Book has been added!";
+                            $_SESSION['popMessage'] = "New Book has been added!";
                             echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="gotoPage(\'ManageBook.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                         }
                         else {
-                            $_SESSION['popMessage'] =  "Error: " . $stmt->error;
+                            $_SESSION['popMessage'] = "Error: " . $stmt->error;
                             echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
@@ -96,7 +95,7 @@
                         //$mysqli->close();
                     }
                     else {
-                        $_SESSION['popMessage'] =  "ISBN should be 13 characters long.";
+                        $_SESSION['popMessage'] = "ISBN should be 13 characters long.";
                         echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                             '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                             '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
@@ -104,7 +103,7 @@
                     }
                 }
                 else {
-                    $_SESSION['popMessage'] =  "All fields are required.";
+                    $_SESSION['popMessage'] = "All fields are required.";
                     echo '<div style="display: flex; background-color: #F3A391;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                         '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .

@@ -106,7 +106,7 @@
                             $_SESSION['popMessage'] = "Error. Could not find match in database";
                             echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
+                                '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                         }
                     }
@@ -116,7 +116,7 @@
                         $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
                         echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                             '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                            '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
+                            '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                             '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                     }
                 }
@@ -126,7 +126,7 @@
                     $_SESSION['popMessage'] = "Incorrrect Username or Password. Please try again.";
                     echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                        '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
+                        '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                 }
                 $stmt->close();
@@ -135,7 +135,7 @@
                 $_SESSION['popMessage'] =  "Error preparing statement: " . $mysqli->error;
                 echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                     '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                    '<input type="button" value="Close" onclick="PopDown()">>' . '</div>' .
+                    '<input type="button" value="Close" onclick="PopDown()">' . '</div>' .
                     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
             }
         }

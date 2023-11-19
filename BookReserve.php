@@ -39,6 +39,7 @@
                     <col width="25%">
 
                     <?php
+                    // only shows books that are available (not reserved)
                     $bookSelect = "SELECT book.Name, AuthorName, Genre, ISBN, Book_ID FROM book where Book_ID not in (SELECT B_ID from bookreservation)";
                     $result = $mysqli->query($bookSelect);
                     if (!$result) {
