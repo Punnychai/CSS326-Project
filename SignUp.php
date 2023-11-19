@@ -12,13 +12,16 @@
     <?php
         session_start();
         if (isset($_POST['SignUp'])) {
-            $userType = $_POST['utype'];
-            $fname=$_POST['fname'];
-            $lname=$_POST['lname'];
-            $dob=$_POST['dob'];
-            $username=$_POST['username'];
-            if($_POST['passwd']==$_POST['cfmpasswd']){
-                $password=$_POST['passwd'];
+            // Store user data in $_SESSION
+            $_SESSION['userType'] = $_POST['utype'];
+            $_SESSION['fname'] = $_POST['fname'];
+            $_SESSION['lname'] = $_POST['lname'];
+            $_SESSION['dob'] = $_POST['dob'];
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['signup'] = true;
+            
+            if($_POST['passwd'] == $_POST['cfmpasswd']){
+                $_SESSION['passwd'] = $_POST['passwd'];
             }
             else {
                 // Passwords don't match, display an error message
@@ -28,15 +31,8 @@
                 </script>';
                 exit(); // Exit the script to prevent further execution
             }
-            // Store user data in $_SESSION
-            $_SESSION['userType'] = $userType;
-            $_SESSION['fname'] = $fname;
-            $_SESSION['lname'] = $lname;
-            $_SESSION['dob'] = $dob;
-            $_SESSION['username']=$username;
-            $_SESSION['passwd']=$password;
-            $_SESSION['signup'] = true;
-            if ($userType == "member") {
+            
+            if ($_SESSION['userType'] == "member") {
                 if (isset($_POST['memberType'])) {
                     // Capture and store additional member-specific data in $_SESSION
                     $memberType = $_POST['memberType'];
@@ -54,17 +50,14 @@
                         alert("You are a member!\nPlease select one member type.");
                     </script>';
                 }
-                
             }
             else {
                 header('Location: User.php');
             }
-            
         }
     ?>
 
     <body>
-        
         <form action="" method="post">
             <div class="row">
                 <div class="column">
