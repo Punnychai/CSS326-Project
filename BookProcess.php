@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($stmt->affected_rows > 0) {
                 // Successful insertion
                 echo "Reservation successfully added.";
+                header('Location: BookReserve.php');
             } else {
                 // Failed to insert
                 echo "Failed to add reservation.";

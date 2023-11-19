@@ -22,7 +22,48 @@
                 //     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay2"></div>';
             // }
         ?>
-        
+        <?php
+        //include 'connect.php';
+
+        // Fetch table information from the database
+        $query = "SELECT TableNo, BookedFlag FROM libtable";
+        $result = $mysqli->query($query);
+
+        if ($result) {
+            // Fetch the rows as associative arrays
+            $tables = $result->fetch_all(MYSQLI_ASSOC);
+            $result->free();
+
+            echo '<div class="row">';
+            echo '<div class="table-panel">';
+            
+            // Iterate through the fetched data to create buttons dynamically
+            foreach ($tables as $table) {
+                $tableNo = $table['TableNo'];
+                $bookedFlag = $table['BookedFlag'];
+                $buttonClass = ($bookedFlag == 1) ? 'table reserved' : 'table';
+            
+                // Render button without link if BookedFlag is 1
+                if ($bookedFlag == 1) {
+                    echo '<button class="' . $buttonClass . '" id="table' . $tableNo . '">Table ' . $tableNo . '</button>';
+                } else {
+                    echo '<button onclick="gotoPage(\'TableProcess.php?tableNo=' . $tableNo . '\')" class="' . $buttonClass . '" id="table' . $tableNo . '">Table ' . $tableNo . '</button>';
+                }
+            }
+            
+            
+            
+            echo '</div>';
+            echo '<div class="icon-container">';
+            echo '<img src="pictures\CSS326BasedLib.png" alt="Logo">';
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo "Error: Unable to fetch table information.";
+        }
+        ?>
+
+        <!--
         <div class="row">
             <div class="table-panel">
                 <button onclick="gotoPage('TableProcess.php')" class="table " id="table1">Table 1</button>
@@ -42,6 +83,7 @@
             </div>
 
         </div>
+            -->
         <script src="script.js"></script>
     </body>
 </html>
