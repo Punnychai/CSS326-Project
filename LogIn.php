@@ -43,7 +43,7 @@
                         // Store the user's ID in the session to indicate they are logged in
                         $_SESSION['user_id'] = $user_id;
                         // Prepare an SQL query to retrieve the Member_Flag column
-                        $sql = "SELECT Member_Flag FROM user WHERE User_ID = ?";
+                        $sql = "SELECT Member_Flag, Admin_Flag FROM user WHERE User_ID = ?";
 
                         // Create a prepared statement
                         $stmt = $mysqli->prepare($sql);
@@ -55,41 +55,51 @@
                         $stmt->execute();
 
                         // Bind the result to a variable
-                        $stmt->bind_result($memberFlag);
+                        $stmt->bind_result($memberFlag, $adminFlag);
 
                         // Fetch the result
                         if ($stmt->fetch()) {
-                            // Check the value of Member_Flag
-                            if ($memberFlag == 1) {
-                                // Redirect to Member.php if the user is a member
+                            // Check Admin
+                            if ($adminFlag == 1) {
+                                // Redirect to Admin.php if the user is an admin
                                 $_SESSION['username']=$username;
-                                $_SESSION['userType']="Member";
-                                /*
-                                $sqlmem="SELECT Member_Type, Member_Faculty, Member_Year from user WHERE User_ID = ?";
-                                $stmtmem=$mysqli->prepare($sqlmem);
-                                $stmtmem->bind_param("i", $user_id);
-                                $stmtmem->execute();
-                                $stmtmem->bind_result($memberType,$faculty,$doe);
-                                if($memberType==1){
-                                    $_SESSION['memberType']="Student";
-                                }
-                                if($memberType==2){
-                                    $_SESSION['memberType']="Professor";
-                                }
-                                if($memberType==3){
-                                    $_SESSION['memberType']="Faculty";
-                                }
-                                $_SESSION['faculty']=$faculty;
-                                $_SESSION['doe']=$doe;
-                                */
-                                header('Location: Member.php');
-                            } else {
-                                // Redirect to User.php if the user is not a member (0=user)
-                                $_SESSION['username']=$username;
-                                $_SESSION['userType']="General";
-                                header('Location: User.php');
+                                    $_SESSION['userType']="Admin";
+                                header('Location: Admin.php');
                             }
-                            exit(); // Make sure no further code is executed
+                            else {
+                                // Check Member
+                                if ($memberFlag == 1) {
+                                    // Redirect to Member.php if the user is a member
+                                    $_SESSION['username']=$username;
+                                    $_SESSION['userType']="Member";
+                                    /*
+                                    $sqlmem="SELECT Member_Type, Member_Faculty, Member_Year from user WHERE User_ID = ?";
+                                    $stmtmem=$mysqli->prepare($sqlmem);
+                                    $stmtmem->bind_param("i", $user_id);
+                                    $stmtmem->execute();
+                                    $stmtmem->bind_result($memberType,$faculty,$doe);
+                                    if($memberType==1){
+                                        $_SESSION['memberType']="Student";
+                                    }
+                                    if($memberType==2){
+                                        $_SESSION['memberType']="Professor";
+                                    }
+                                    if($memberType==3){
+                                        $_SESSION['memberType']="Faculty";
+                                    }
+                                    $_SESSION['faculty']=$faculty;
+                                    $_SESSION['doe']=$doe;
+                                    */
+                                    header('Location: Member.php');
+                                } 
+                                else {
+                                    // Redirect to User.php if the user is not a member (0=user)
+                                    $_SESSION['username']=$username;
+                                    $_SESSION['userType']="General";
+                                    header('Location: User.php');
+                                }
+                                exit(); // Make sure no further code is executed
+                            }
                         }
                         else {
                             // Error fetching the result
