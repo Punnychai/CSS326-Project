@@ -15,47 +15,45 @@
     <?php
         session_start();
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_GET['tableNo']) && isset($_POST['startTime']) && isset($_POST['endTime'])) {
-                $tableNo = $_GET['tableNo'];
-                $startTime = $_POST['startTime'];
-                $endTime = $_POST['endTime'];
-
-                // Get user ID from session
-                if (isset($_SESSION['user_id'])) {
-                    $userID = $_SESSION['user_id'];
-
-                    // Insert into TableReservation table
-                    $insertQuery = "INSERT INTO TableReservation (U_ID, TableNo, ReservationDate, EndDate) VALUES (?, ?, ?, ?)";
-                    $stmt = $mysqli->prepare($insertQuery);
-
-                    if ($stmt) {
-                        // Assuming ReservationDate corresponds to $startTime
-                        $reservationDate = date('Y-m-d') . ' ' . $startTime;
-
-                        // Combining date and time for end time
-                        $endDate = date('Y-m-d') . ' ' . $endTime;
-
-                        $stmt->bind_param("iiss", $userID, $tableNo, $reservationDate, $endDate);
-                        $stmt->execute();
-
-                        if ($stmt->affected_rows > 0) {
-                            $_SESSION['popMessage'] = "Reservation successfully added.";
-                            echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
-                                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="gotoPage(\'TableReserve.php\')">' . '</div>' .
-                                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-                            
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_GET['tableNo']) && isset($_POST['startTime']) && isset($_POST['endTime'])) {
+            $tableNo = $_GET['tableNo'];
+            $startTime = $_POST['startTime'];
+            $endTime = $_POST['endTime'];
+    
+            // Get user ID from session
+            if (isset($_SESSION['user_id'])) {
+                $userID = $_SESSION['user_id'];
+    
+                // Insert into TableReservation table
+                $insertQuery = "INSERT INTO TableReservation (U_ID, TableNo, ReservationDate, EndDate) VALUES (?, ?, ?, ?)";
+                $stmt = $mysqli->prepare($insertQuery);
+    
+                if ($stmt) {
+                    // Assuming ReservationDate corresponds to $startTime
+                    $reservationDate = date('Y-m-d') . ' ' . $startTime;
+    
+                    // Combining date and time for end time
+                    $endDate = date('Y-m-d') . ' ' . $endTime;
+    
+                    $stmt->bind_param("iiss", $userID, $tableNo, $reservationDate, $endDate);
+                    $stmt->execute();
+    
+                    if ($stmt->affected_rows > 0) {
+                        // Reservation successful - Update libtable's BookedFlag
+                        $updateQuery = "UPDATE libtable SET BookedFlag = 1 WHERE TableNo = ?";
+                        $updateStmt = $mysqli->prepare($updateQuery);
+    
+                        if ($updateStmt) {
+                            $updateStmt->bind_param("i", $tableNo);
+                            $updateStmt->execute();
+                            $updateStmt->close();
                         } else {
-                            $_SESSION['popMessage'] = "Failed to add reservation.";
-                            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
-                                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                                '<input type="button" value="Close" onclick="gotoPage(\'TableProcess.php\')">' . '</div>' .
-                                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-                            unset($SESSION['popMessage']);
+                            echo "Error: Unable to prepare update statement.";
                         }
-
-                        $stmt->close();
+    
+                        echo "Reservation successful!";
+                        header('Location: TableReserve.php');
                     } else {
                         $_SESSION['popMessage'] = "Error: Unable to prepare SQL statement.";
                         echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
@@ -82,6 +80,7 @@
             }
         }
     ?>
+    
 
     <body class="center">
         <div class="headbar">
