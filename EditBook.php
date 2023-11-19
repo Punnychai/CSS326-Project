@@ -35,20 +35,20 @@
                 $stmt->close();
             } else {
                 // Error in preparing the statement
-                $_SESSION['popMessage'] =  "Error: Unable to prepare SQL statement.";
+                $_SESSION['popMessage'] = "Error: Unable to prepare SQL statement.";
                 echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                     '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                    '<input type="button" value="Close" onclick="gotoPage(\'ManageBook.php\')">' . '</div>' .
                     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
             }
         } else {
             // Handle the case when 'bID' is missing or the request method is not GET
-            $_SESSION['popMessage'] =  "Book ID missing or Update: ";
-            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
-                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
-                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-            
+            $_SESSION['popMessage'] = "Error: Book ID missing.";
+                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                    '<input type="button" value="Close" onclick="gotoPage(\'ManageBook.php\')">' . '</div>' .
+                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                unset($SESSION['popMessage']);
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_GET['bID'])) {
             // Retrieve form data
@@ -68,17 +68,17 @@
 
                 if ($stmt->affected_rows > 0) {
                     // Successful update
-                    $_SESSION['popMessage'] =  "Book details updated successfully!";
+                    $_SESSION['popMessage'] = "Book details updated successfully!";
                     echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                        '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                        '<input type="button" value="Close" onclick="gotoPage(\'EditBook.php\')">' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                 } else {
                     // No rows affected, probably no changes made
-                    $_SESSION['popMessage'] =  "No changes were made to the book details.";
+                    $_SESSION['popMessage'] = "No changes were made to the book details.";
                     echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
                         '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                        '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                        '<input type="button" value="Close" onclick="gotoPage(\'EditBook.php\')">' . '</div>' .
                         '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
                 }
 
@@ -86,10 +86,10 @@
                 header('Location: ManageBook.php');
             } else {
                 // Error in preparing the statement
-                $_SESSION['popMessage'] =  "Error: Unable to prepare SQL statement.";
+                $_SESSION['popMessage'] = "Error: Unable to prepare SQL statement.";
                 echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                     '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                    '<input type="button" value="Close" onclick="gotoPage(\'EditBook.php\')">' . '</div>' .
                     '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
             }
         }

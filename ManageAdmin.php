@@ -70,14 +70,29 @@
                     
                         $Username = $_GET['Username'];
                         if (isset($Username)) {
-                            $q="UPDATE user SET Admin_Flag = 0 WHERE Username = '$Username'";
-                            if(!$mysqli->query($q)) {
-                                echo "DELETE failed. Error: ".$mysqli->error ;
+                            // $q="UPDATE user SET Admin_Flag = 0 WHERE Username = '$Username'";
+                            // if($mysqli->query($q)) {
+                            //     echo "DELETE success. Error: ".$mysqli->error ;
+                            // }
+                            // //redirect
+                            // header("Location: ManageAdmin.php");
+                            // unset($Username);   
+                            // exit();
+                            
+                            $q = "UPDATE user SET Admin_Flag = 0 WHERE Username = '$Username'";
+                            if ($mysqli->query($q)) {
+                                $_SESSION['popMessage'] =  "$Username's Admin flag has been removed";
+                                echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
+                                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                                    '<div style="display: flex; margin: -30vw;" class="overlay" id="overlay"></div>';
+                            } else {
+                                $_SESSION['popMessage'] =  "Update failed: " . $mysqli->error;
+                                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                                    '<div style="display: flex; margin: -30vw;" class="overlay" id="overlay"></div>';
                             }
-                            //redirect
-                            header("Location: ManageAdmin.php");
-                            unset($Username);   
-                            exit();
                         }
                     ?>
                 </table>
