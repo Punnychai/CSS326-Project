@@ -12,6 +12,7 @@
     </head>
     <body class="center">
         <?php include 'headBar.php'; ?>
+
         <?php
             if(isset($_SESSION['signup']) && $_SESSION['signup']==1) {
                 $_SESSION['signup']=0;
@@ -44,9 +45,9 @@
                         $_SESSION['user_id']=$user_id;
                         // Now, bind values to the placeholders for the login table
                         $loginUsername = $_SESSION['username'];
-                        $loginPassword = $_SESSION['passwd']; // Assuming password is "root"
-
-                        $loginStmt->bind_param("iss", $user_id, $loginUsername, $loginPassword);
+                        $loginPassword = $_SESSION['passwd']; 
+                        $hashedPassword = password_hash($loginPassword, PASSWORD_BCRYPT);
+                        $loginStmt->bind_param("iss", $user_id, $loginUsername, $hashedPassword);
 
                         // Execute the statement for inserting login data
                         if ($loginStmt->execute()) {

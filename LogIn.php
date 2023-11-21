@@ -38,7 +38,7 @@
                     $stmt->fetch();
         
                     // Verify the password
-                    if ($password==$dbPassword) {
+                    if (password_verify($password, $dbPassword)) {
         
                         // Store the user's ID in the session to indicate they are logged in
                         $_SESSION['user_id'] = $user_id;

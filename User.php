@@ -24,6 +24,7 @@
                 $dob = $_SESSION['dob'];
                 $username = $_SESSION['username'];
                 $password = $_SESSION['passwd']; // Hash the default password
+                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
                 // Create the SQL query to insert user data into the "user" table
                 $sqlUser = "INSERT INTO user (User_FName, User_LName, Username, User_DOB, User_Blacklist, Member_Flag, Member_Type, Member_Faculty, Member_Year, General_Flag, Admin_Flag)
@@ -52,7 +53,7 @@
 
                         if ($stmtLogin) {
                             // Bind parameters and execute the statement
-                            $stmtLogin->bind_param("iss", $user_id, $username, $password);
+                            $stmtLogin->bind_param("iss", $user_id, $username, $hashedPassword);
                             
                             if ($stmtLogin->execute()) {
                                 echo "User and login data inserted successfully.";
