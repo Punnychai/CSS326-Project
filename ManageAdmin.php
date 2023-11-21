@@ -100,64 +100,77 @@
         </div>
 
         <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['admuser'], $_POST['admpasswd']) && !empty($_POST['admuser']) && !empty($_POST['admpasswd'])) {
-                // Retrieve username and password from the form
-                $username = $_POST['admuser'];
-                $password = $_POST['admpasswd'];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['admuser'], $_POST['admpasswd']) && !empty($_POST['admuser']) && !empty($_POST['admpasswd'])) {
+                    // Retrieve username and password from the form
+                    $username = $_POST['admuser'];
+                    $password = $_POST['admpasswd'];
 
-                // Prepare and execute a query to retrieve User_ID and hashed password from login table
-                $stmt = $mysqli->prepare("SELECT User_ID, password FROM login WHERE Username = ?");
-                $stmt->bind_param("s", $username);
-                $stmt->execute();
-                $result = $stmt->get_result();
+                    // Prepare and execute a query to retrieve User_ID and hashed password from login table
+                    $stmt = $mysqli->prepare("SELECT User_ID, password FROM login WHERE Username = ?");
+                    $stmt->bind_param("s", $username);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
 
-                if ($result->num_rows === 1) {
-                    $row = $result->fetch_assoc();
-                    $hashedPasswordFromDB = $row['password'];
-                    $user_id = $row['User_ID'];
+                    if ($result->num_rows === 1) {
+                        $row = $result->fetch_assoc();
+                        $hashedPasswordFromDB = $row['password'];
+                        $user_id = $row['User_ID'];
 
-                    // Verify the provided password with the hashed password from the database
-                    if (password_verify($password, $hashedPasswordFromDB)) {
-                        // Passwords match, proceed with updating Admin_Flag
+                        // Verify the provided password with the hashed password from the database
+                        if (password_verify($password, $hashedPasswordFromDB)) {
+                            // Passwords match, proceed with updating Admin_Flag
 
-                        // Update Admin_Flag in the user table
-                        $update_stmt = $mysqli->prepare("UPDATE user SET Admin_Flag = 1 WHERE User_ID = ?");
-                        $update_stmt->bind_param("i", $user_id);
-                        $update_success = $update_stmt->execute();
+                            // Update Admin_Flag in the user table
+                            $update_stmt = $mysqli->prepare("UPDATE user SET Admin_Flag = 1 WHERE User_ID = ?");
+                            $update_stmt->bind_param("i", $user_id);
+                            $update_success = $update_stmt->execute();
 
-                        if ($update_success) {
-                            $_SESSION['popMessage'] =  "Admin flag updated successfully for User_ID: $user_id";
-                            echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
+                            if ($update_success) {
+                                $_SESSION['popMessage'] =  "Admin flag updated successfully for User_ID: $user_id";
+                                echo '<div style="display: flex; background-color: #4CA82C;" class="popError center column" id="popup">' .
+                                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                                unset($_SESSION['popMessage']);
+                            } else {
+                                $_SESSION['popMessage'] =  "Failed to update admin flag for User_ID: $user_id";
+                                echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                                    '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                                    '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                                    '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                                unset($_SESSION['popMessage']);
+                            }
+
+                            $update_stmt->close();
+                        } else {
+                            $_SESSION['popMessage'] =  "Invalid Username or Password.";
+                            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
                                 '<h2>' . $_SESSION['popMessage'] . '</h2>' .
                                 '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
                                 '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-                            unset($SESSION['popMessage']);
-                        } else {
-                            $_SESSION['popMessage'] =  "Failed to update admin flag for User_ID: $user_id";
+                            unset($_SESSION['popMessage']);
                         }
-
-                        $update_stmt->close();
                     } else {
                         $_SESSION['popMessage'] =  "Invalid Username or Password.";
+                        echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                            '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                            '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                            '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                        unset($_SESSION['popMessage']);
                     }
+
+                    // Close statement and connection
+                    $stmt->close();
                 } else {
-                    $_SESSION['popMessage'] =  "Invalid Username or Password.";
+                    $_SESSION['popMessage'] =  "All fields are required.";
+                        echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
+                        '<h2>' . $_SESSION['popMessage'] . '</h2>' .
+                        '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
+                        '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
+                    unset($_SESSION['popMessage']);
                 }
-
-                // Close statement and connection
-                $stmt->close();
-            } else {
-                $_SESSION['popMessage'] =  "All fields are required.";
             }
-
-            // Display pop-up message
-            echo '<div style="display: flex; background-color: #E46060;" class="popError center column" id="popup">' .
-                '<h2>' . $_SESSION['popMessage'] . '</h2>' .
-                '<input type="button" value="Close" onclick="gotoPage(\'ManageAdmin.php\')">' . '</div>' .
-                '<div style="display: flex; margin: -20vw;" class="overlay" id="overlay"></div>';
-            unset($_SESSION['popMessage']);
-        }
         ?>
 
 
