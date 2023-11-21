@@ -20,7 +20,7 @@
                 // Prepare the user data
                 $userType = $_SESSION['userType'];
                 $fname = $_SESSION['fname'];
-                $lname = $_SESSION['lname'];
+                $lname = $_SESSION['lname'];    
                 $dob = $_SESSION['dob'];
                 $username = $_SESSION['username'];
                 $password = $_SESSION['passwd']; // Hash the default password
@@ -56,21 +56,21 @@
                             $stmtLogin->bind_param("iss", $user_id, $username, $hashedPassword);
                             
                             if ($stmtLogin->execute()) {
-                                echo "User and login data inserted successfully.";
+                                // echo "User and login data inserted successfully.";
                             } else {
-                                echo "Error inserting login data: " . $stmtLogin->error;
+                                // echo "Error inserting login data: " . $stmtLogin->error;
                             }
 
                             // Close the statement
                             $stmtLogin->close();
                         } else {
-                            echo "Error preparing login data statement: " . $mysqli->error;
+                            // echo "Error preparing login data statement: " . $mysqli->error;
                         }
                     } else {
-                        echo "Error inserting user data: " . $stmtUser->error;
+                        // echo "Error inserting user data: " . $stmtUser->error;
                     }
                 } else {
-                    echo "Error preparing user data statement: " . $mysqli->error;
+                    // echo "Error preparing user data statement: " . $mysqli->error;
                 }
             }
             // Check if the user is logged in
@@ -88,7 +88,7 @@
                 }
             } else {
                 // Handle the case when the user is not logged in or session data is not set
-                echo "You are not logged in.";
+                // echo "You are not logged in.";
             }
 
             // Close the database connection

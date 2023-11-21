@@ -53,17 +53,17 @@
                         if ($loginStmt->execute()) {
                             // Both user and login data have been successfully inserted
                         } else {
-                            echo "Error inserting login data: " . $loginStmt->error;
+                            // echo "Error inserting login data: " . $loginStmt->error;
                         }
                     } else {
-                        echo "Error inserting user data: " . $userStmt->error;
+                        // echo "Error inserting user data: " . $userStmt->error;
                     }
 
                     // Close both statements
                     $userStmt->close();
                     $loginStmt->close();
                 } else {
-                    echo "Error preparing statements: " . $mysqli->error;
+                    // echo "Error preparing statements: " . $mysqli->error;
                 }
             }
             // Check if the user is logged in

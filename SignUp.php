@@ -61,7 +61,9 @@
         <form action="" method="post">
             <div class="row">
                 <div class="column">
-                    <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 19vh; display: block; margin-left: auto; margin-right: auto;"><br>
+                    <a href="LogIn.php">
+                        <img src="pictures\CSS326BasedLib.png" alt="Logo" style="height: 19vh; display: block; margin-left: auto; margin-right: auto;"><br>
+                    </a>
                     <label for="fname">First Name</label><br />
                     <input type="text" name="fname" id="fname" class="text-field" required /><br />
                     <label for="lname">Last Name</label><br />
