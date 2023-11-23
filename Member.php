@@ -95,6 +95,7 @@
             
             // Close the database connection
             $mysqli->close();
+            session_destroy();
         ?>
         <a href="TableReserve.php" class="reserve">
             <button>
