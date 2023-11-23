@@ -112,7 +112,7 @@
                     $stmt->execute();
                     $result = $stmt->get_result();
 
-                    if ($result->num_rows === 1) {
+                    if ($result->num_rows >= 1) {
                         $row = $result->fetch_assoc();
                         $hashedPasswordFromDB = $row['password'];
                         $user_id = $row['User_ID'];

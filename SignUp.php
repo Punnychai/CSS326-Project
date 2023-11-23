@@ -116,8 +116,8 @@
                         <div class="column selection-col">
                             <label for="faculty">Faculty</label><br />
                             <select name="faculty" id="faculty">
-                                <option value="Option 1">Option 1</option>
-                                <option value="Option 2">Option 2</option>
+                                <option value="Option 1">SIIT</option>
+                                <option value="Option 2">Others</option>
                             </select>
                             <hr />
                         </div>
