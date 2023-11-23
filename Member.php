@@ -58,7 +58,7 @@
                     } else {
                         // echo "Error inserting user data: " . $userStmt->error;
                     }
-
+                    header('location: LogIn.php');
                     // Close both statements
                     $userStmt->close();
                     $loginStmt->close();

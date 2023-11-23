@@ -12,11 +12,10 @@
     </head>
     <body class="center">
         <?php include 'headBar.php'; ?>
-        <?php
-            // Make sure you have started the session to access $_SESSION variables
-            session_start();
-            if(isset($_SESSION['signup'])){
 
+        <?php
+            if(isset($_SESSION['signup'])){
+                unset($_SESSION['signup']);
                 // Prepare the user data
                 $userType = $_SESSION['userType'];
                 $fname = $_SESSION['fname'];
@@ -42,7 +41,7 @@
                         $user_id = $stmtUser->insert_id;
                         $_SESSION['user_id']=$user_id;
                         // Close the statement
-                        $stmtUser->close();
+                        // $stmtUser->close();
 
                         // Create the SQL query to insert login data into the "login" table
                         $sqlLogin = "INSERT INTO login (User_ID, username, password)
@@ -60,9 +59,11 @@
                             } else {
                                 // echo "Error inserting login data: " . $stmtLogin->error;
                             }
-
-                            // Close the statement
-                            $stmtLogin->close();
+                            
+                            header('location: LogIn.php');
+                            // Close both statements
+                            $userStmt->close();
+                            $loginStmt->close();
                         } else {
                             // echo "Error preparing login data statement: " . $mysqli->error;
                         }

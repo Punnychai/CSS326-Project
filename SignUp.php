@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     </head>
     <?php
+        // Make sure you have started the session to access $_SESSION variables
         session_start();
         if (isset($_POST['SignUp'])) {
             // Store user data in $_SESSION
